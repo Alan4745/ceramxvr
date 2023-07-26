@@ -23,9 +23,7 @@
           var butonPaused = document.querySelector("#butonPaused");
           var cursor1 = document.querySelector("#cursor1");
           var ascene = document.querySelector("#ascene");
-          var counter = document.querySelector("#counter");
-
-          var textCounter = document.querySelector("#text-counter");
+          var notificacion = document.querySelector("#notificacion");
           var testVideo = document.querySelector("#testVideo");
           let scene3 = false;
 
@@ -37,8 +35,6 @@
           var audioVoicer = document.querySelector("#audioVoicer");
           var controls =
             document.querySelector("a-camera").components["look-controls"];
-
-          var plano_snow = document.querySelector("#plano_snow");
 
           var el = this.el;
           el.addEventListener("click", function () {
@@ -63,7 +59,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
-            butonPaused.setAttribute("position", "0 -3.1 0");
+            butonPaused.setAttribute("position", "0 -3 0");
 
             audioBackgroud.src =
               "./assets/audios/audios_backgroud_music/Snow_Scene_Background_Music.mp3";
@@ -73,52 +69,25 @@
             video.src = "./assets/videos/snow.mp4";
             video.volume = 50 / 100;
             video.play();
+            audioBackgroud.play();
+            audioVoicer.play();
           });
 
-          let stop = false;
-
           el.addEventListener("mouseenter", function () {
-            stop = false;
-
-            plano_snow.setAttribute("opacity", "0.25");
-
+            el.setAttribute("opacity", "0.25");
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
             cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "true");
-              textCounter.setAttribute("visible", "true");
-              textCounter.setAttribute("value", "3");
-
-              let contador = 3;
-              const interval = setInterval(() => {
-                if (stop == true) {
-                  console.log("se paro sepetirnamente");
-                  clearInterval(interval);
-                }
-                console.log(contador);
-                textCounter.setAttribute("value", `${contador}`);
-
-                contador--;
-
-                if (contador < 0) {
-                  clearInterval(interval);
-                  console.log("¡Tiempo terminado!");
-                }
-              }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+              notificacion.setAttribute("visible", "true");
             }
           });
           el.addEventListener("mouseleave", function () {
-            stop = true;
-
-            plano_snow.setAttribute("opacity", "0");
-
+            el.setAttribute("opacity", "0");
             cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "false");
-              textCounter.setAttribute("visible", "false");
-              textCounter.setAttribute("value", "3");
+              notificacion.setAttribute("visible", "false");
             }
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
@@ -149,10 +118,9 @@
           var hover1 = document.querySelector("#hover1");
           var menuPause = document.querySelector("#menuPause");
           var cursor1 = document.querySelector("#cursor1");
-          var counter = document.querySelector("#counter");
+          var notificacion = document.querySelector("#notificacion");
 
           var butonPaused = document.querySelector("#butonPaused");
-          var textCounter = document.querySelector("#text-counter");
 
           let scene3 = false;
 
@@ -161,9 +129,6 @@
           var audioMainMenu = document.querySelector("#audioMainMenu");
           var audioBackgroud = document.querySelector("#audioBackgroud");
           var audioVoicer = document.querySelector("#audioVoicer");
-
-          var plano_debris = document.querySelector("#plano_debris");
-
           var el = this.el;
           el.addEventListener("click", function () {
             let controls =
@@ -184,7 +149,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
-            butonPaused.setAttribute("position", "0 -3.1 0");
+            butonPaused.setAttribute("position", "0 -3 0");
             audioMainMenu.pause();
 
             audioBackgroud.src =
@@ -196,50 +161,24 @@
             video.src = "./assets/videos/debris.mp4";
             video.volume = 50 / 100;
             video.play();
-
+            audioBackgroud.play();
+            audioVoicer.play();
           });
-
-          let stop = false;
-
           el.addEventListener("mouseenter", function () {
-            stop = false;
-            plano_debris.setAttribute("opacity", "0.25");
-
+            el.setAttribute("opacity", "0.25");
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
             cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "true");
-              textCounter.setAttribute("visible", "true");
-              textCounter.setAttribute("value", "3");
-
-              let contador = 3;
-              const interval = setInterval(() => {
-                if (stop == true) {
-                  console.log("se paro sepetirnamente");
-                  clearInterval(interval);
-                }
-                console.log(contador);
-                textCounter.setAttribute("value", `${contador}`);
-
-                contador--;
-
-                if (contador < 0) {
-                  clearInterval(interval);
-                  console.log("¡Tiempo terminado!");
-                }
-              }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+              notificacion.setAttribute("visible", "true");
             }
           });
           el.addEventListener("mouseleave", function () {
-            stop = true;
-            plano_debris.setAttribute("opacity", "0");
+            el.setAttribute("opacity", "0");
             cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "false");
-              textCounter.setAttribute("visible", "false");
-              textCounter.setAttribute("value", "3");
+              notificacion.setAttribute("visible", "false");
             }
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
@@ -272,14 +211,11 @@
           var butonPaused = document.querySelector("#butonPaused");
           // var camerarotation = document.querySelector('#camerarotation')
           var cursor1 = document.querySelector("#cursor1");
-          var counter = document.querySelector("#counter");
+          var notificacion = document.querySelector("#notificacion");
 
           var audioMainMenu = document.querySelector("#audioMainMenu");
           var audioBackgroud = document.querySelector("#audioBackgroud");
           var audioVoicer = document.querySelector("#audioVoicer");
-          var textCounter = document.querySelector("#text-counter");
-          var plano_rain = document.querySelector("#plano_rain");
-
           let scene3 = false;
 
           var el = this.el;
@@ -301,7 +237,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
-            butonPaused.setAttribute("position", "0 -3.1 0");
+            butonPaused.setAttribute("position", "0 -3 0");
             audioMainMenu.pause();
 
             audioBackgroud.src =
@@ -312,168 +248,24 @@
             video.src = "./assets/videos/rain.mp4";
             video.volume = 50 / 100;
             video.play();
-
+            audioBackgroud.play();
+            audioVoicer.play();
           });
-
-          let stop = false;
-
           el.addEventListener("mouseenter", function () {
-            stop = false;
-            plano_rain.setAttribute("opacity", "0.25");
+            el.setAttribute("opacity", "0.25");
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
             cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "true");
-              textCounter.setAttribute("visible", "true");
-              textCounter.setAttribute("value", "3");
-
-              let contador = 3;
-              const interval = setInterval(() => {
-                if (stop == true) {
-                  console.log("se paro sepetirnamente");
-                  clearInterval(interval);
-                }
-                console.log(contador);
-                textCounter.setAttribute("value", `${contador}`);
-
-                contador--;
-
-                if (contador < 0) {
-                  clearInterval(interval);
-                  console.log("¡Tiempo terminado!");
-                }
-              }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+              notificacion.setAttribute("visible", "true");
             }
           });
           el.addEventListener("mouseleave", function () {
-            stop = true;
-            plano_rain.setAttribute("opacity", "0");
+            el.setAttribute("opacity", "0");
             cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "false");
-              textCounter.setAttribute("visible", "false");
-              textCounter.setAttribute("value", "3");
-            }
-
-            // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
-          });
-
-          testVideo.addEventListener("ended", function () {
-            if (video.getAttribute("esene") == "true") {
-              console.log("temino de video glare");
-
-              scene1.setAttribute("visible", "true");
-              scene1.setAttribute("position", "0 0 0");
-              scene2.setAttribute("visible", "false");
-              camera1.setAttribute("fov", "50");
-              audioMainMenu.play();
-            }
-            // Aquí puedes realizar las acciones que desees al finalizar el video
-          }); // var videoElement = this.el.components.material.material.map.image;s
-        },
-      });
-
-      AFRAME.registerComponent("event-glare", {
-        init: function () {
-          var mainMenu = document.querySelector("#mainMenu");
-          var scene1 = document.querySelector("#scene1");
-          var scene2 = document.querySelector("#scene2");
-          var video = document.querySelector("#testVideo");
-          var camera1 = document.querySelector("#camera1");
-          var hover4 = document.querySelector("#hover4");
-          var menuPause = document.querySelector("#menuPause");
-          var cursor1 = document.querySelector("#cursor1");
-          var counter = document.querySelector("#counter");
-          let scene3 = false;
-
-          var textCounter = document.querySelector("#text-counter");
-
-          var butonPaused = document.querySelector("#butonPaused");
-          // var camerarotation = document.querySelector('#camerarotation')
-          var eventabout1 = document.querySelector("#eventabout1");
-
-          var plano_glare = document.querySelector("#plano_glare");
-
-          var el = this.el;
-          el.addEventListener("click", function () {
-            let controls =
-              document.querySelector("a-camera").components["look-controls"];
-            controls.pitchObject.rotation.x = 0;
-            controls.yawObject.rotation.y = 0;
-
-            scene3 = true;
-            video.setAttribute("esene", "true");
-            console.log(video.getAttribute("esene"));
-
-            var audioBackgroud1 = localStorage.getItem("audioBackgroud");
-            var audioVoicer1 = localStorage.getItem("audioVoicer");
-            var videoAudio1 = localStorage.getItem("videoAudio");
-
-            audioMainMenu.pause();
-            scene1.setAttribute("visible", "false");
-            // scene1.setAttribute('rotation', "0 100 0")
-            scene1.setAttribute("visible", "false");
-            scene1.setAttribute("position", "0 15 0");
-            scene2.setAttribute("rotation", "0 0 0");
-            scene2.setAttribute("visible", "true");
-            camera1.setAttribute("fov", "80");
-            menuPause.setAttribute("position", "0 25 0");
-            butonPaused.setAttribute("position", "0 -3.1 0");
-            audioBackgroud.src =
-              "./assets/audios/audios_backgroud_music/Glare_Scene_Background_Music.mp3";
-            audioBackgroud.volume = 0 / 100;
-            audioVoicer.src =
-              "./assets/audios/audios_voiceovers/Glare_Post.mp3";
-            audioVoicer.volume = 0 / 100;
-            video.src = "./assets/videos/glare.mp4";
-            video.volume = 50 / 100;
-            video.play();
-
-          });
-
-          let stop = false;
-
-          el.addEventListener("mouseenter", function () {
-            stop = false;
-            plano_glare.setAttribute("opacity", "0.25");
-            // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
-            cursor1.setAttribute("material", "color: #0061AF");
-
-            if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "true");
-              textCounter.setAttribute("visible", "true");
-              textCounter.setAttribute("value", "3");
-
-              let contador = 3;
-              const interval = setInterval(() => {
-                if (stop == true) {
-                  console.log("se paro sepetirnamente");
-                  clearInterval(interval);
-                }
-                console.log(contador);
-                textCounter.setAttribute("value", `${contador}`);
-
-                contador--;
-
-                if (contador < 0) {
-                  clearInterval(interval);
-                  console.log("¡Tiempo terminado!");
-                }
-              }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
-            }
-          });
-          el.addEventListener("mouseleave", function () {
-            stop = true;
-
-            plano_glare.setAttribute("opacity", "0");
-            cursor1.setAttribute("material", "color: white");
-
-            if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "false");
-              textCounter.setAttribute("visible", "false");
-              textCounter.setAttribute("value", "3");
+              notificacion.setAttribute("visible", "false");
             }
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
@@ -504,7 +296,7 @@
           var menuPause = document.querySelector("#menuPause");
           // var cursor1 = document.querySelector('#cursor1');
           var cursor1 = document.querySelector("#cursor1");
-          var counter = document.querySelector("#counter");
+          var notificacion = document.querySelector("#notificacion");
 
           var butonPaused = document.querySelector("#butonPaused");
           // var camerarotation = document.querySelector('#camerarotation')
@@ -514,9 +306,6 @@
           var audioMainMenu = document.querySelector("#audioMainMenu");
           var audioBackgroud = document.querySelector("#audioBackgroud");
           var audioVoicer = document.querySelector("#audioVoicer");
-          var textCounter = document.querySelector("#text-counter");
-          var plano_insects = document.querySelector("#plano_insects");
-
           let scene3 = false;
 
           var el = this.el;
@@ -541,7 +330,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
-            butonPaused.setAttribute("position", "0 -3.1 0");
+            butonPaused.setAttribute("position", "0 -3 0");
             audioBackgroud.src =
               "./assets/audios/audios_backgroud_music/Insects_Scene_Background_Music.mp3";
             audioBackgroud.volume = 0 / 100;
@@ -551,50 +340,24 @@
             video.src = "./assets/videos/insects.mp4";
             video.volume = 50 / 100;
             video.play();
-
+            audioBackgroud.play();
+            audioVoicer.play();
           });
-
-          let stop = false;
-
           el.addEventListener("mouseenter", function () {
-            stop = false;
-            plano_insects.setAttribute("opacity", "0.25");
+            el.setAttribute("opacity", "0.25");
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
             cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "true");
-              textCounter.setAttribute("visible", "true");
-              textCounter.setAttribute("value", "3");
-
-              let contador = 3;
-              const interval = setInterval(() => {
-                if (stop == true) {
-                  console.log("se paro sepetirnamente");
-                  clearInterval(interval);
-                }
-                console.log(contador);
-                textCounter.setAttribute("value", `${contador}`);
-
-                contador--;
-
-                if (contador < 0) {
-                  clearInterval(interval);
-                  console.log("¡Tiempo terminado!");
-                }
-              }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+              notificacion.setAttribute("visible", "true");
             }
           });
           el.addEventListener("mouseleave", function () {
-            stop = true;
-
-            plano_insects.setAttribute("opacity", "0");
+            el.setAttribute("opacity", "0");
             cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "false");
-              textCounter.setAttribute("visible", "false");
-              textCounter.setAttribute("value", "3");
+              notificacion.setAttribute("visible", "false");
             }
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
@@ -616,6 +379,95 @@
         },
       });
 
+      AFRAME.registerComponent("event-glare", {
+        init: function () {
+          var mainMenu = document.querySelector("#mainMenu");
+          var scene1 = document.querySelector("#scene1");
+          var scene2 = document.querySelector("#scene2");
+          var video = document.querySelector("#testVideo");
+          var camera1 = document.querySelector("#camera1");
+          var hover4 = document.querySelector("#hover4");
+          var menuPause = document.querySelector("#menuPause");
+          var cursor1 = document.querySelector("#cursor1");
+          var notificacion = document.querySelector("#notificacion");
+          let scene3 = false;
+
+          var butonPaused = document.querySelector("#butonPaused");
+          // var camerarotation = document.querySelector('#camerarotation')
+          var eventabout1 = document.querySelector("#eventabout1");
+
+          var el = this.el;
+          el.addEventListener("click", function () {
+            let controls =
+              document.querySelector("a-camera").components["look-controls"];
+            controls.pitchObject.rotation.x = 0;
+            controls.yawObject.rotation.y = 0;
+
+            scene3 = true;
+            video.setAttribute("esene", "true");
+            console.log(video.getAttribute("esene"));
+
+            var audioBackgroud1 = localStorage.getItem("audioBackgroud");
+            var audioVoicer1 = localStorage.getItem("audioVoicer");
+            var videoAudio1 = localStorage.getItem("videoAudio");
+
+            audioMainMenu.pause();
+            scene1.setAttribute("visible", "false");
+            // scene1.setAttribute('rotation', "0 100 0")
+            scene1.setAttribute("visible", "false");
+            scene1.setAttribute("position", "0 15 0");
+            scene2.setAttribute("rotation", "0 0 0");
+            scene2.setAttribute("visible", "true");
+            camera1.setAttribute("fov", "80");
+            menuPause.setAttribute("position", "0 25 0");
+            butonPaused.setAttribute("position", "0 -3 0");
+            audioBackgroud.src =
+              "./assets/audios/audios_backgroud_music/Glare_Scene_Background_Music.mp3";
+            audioBackgroud.volume = 0 / 100;
+            audioVoicer.src =
+              "./assets/audios/audios_voiceovers/Glare_Post.mp3";
+            audioVoicer.volume = 0 / 100;
+            video.src = "./assets/videos/glare.mp4";
+            video.volume = 50 / 100;
+            video.play();
+            audioBackgroud.play();
+            audioVoicer.play();
+          });
+          el.addEventListener("mouseenter", function () {
+            el.setAttribute("opacity", "0.25");
+            // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
+            cursor1.setAttribute("material", "color: #0061AF");
+
+            if (cursor1.getAttribute("visible") == true) {
+              notificacion.setAttribute("visible", "true");
+            }
+          });
+          el.addEventListener("mouseleave", function () {
+            el.setAttribute("opacity", "0");
+            cursor1.setAttribute("material", "color: white");
+
+            if (cursor1.getAttribute("visible") == true) {
+              notificacion.setAttribute("visible", "false");
+            }
+
+            // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
+          });
+
+          testVideo.addEventListener("ended", function () {
+            if (video.getAttribute("esene") == "true") {
+              console.log("temino de video glare");
+
+              scene1.setAttribute("visible", "true");
+              scene1.setAttribute("position", "0 0 0");
+              scene2.setAttribute("visible", "false");
+              camera1.setAttribute("fov", "50");
+              audioMainMenu.play();
+            }
+            // Aquí puedes realizar las acciones que desees al finalizar el video
+          }); // var videoElement = this.el.components.material.material.map.image;s
+        },
+      });
+
       AFRAME.registerComponent("event-pause", {
         init: function () {
           var scene1 = document.querySelector("#scene1");
@@ -629,60 +481,23 @@
 
           var audioBackgroud = document.querySelector("#audioBackgroud");
           var audioVoicer = document.querySelector("#audioVoicer");
-          var counter = document.querySelector("#counter");
-
-          var textCounter = document.querySelector("#text-counter");
 
           var el = this.el;
           el.addEventListener("click", function () {
             menuPause.setAttribute("visible", "true");
             video1.setAttribute("color", "#1A5DA9");
             menuPause.setAttribute("position", "0 0 0");
-
+            audioBackgroud.pause();
+            audioVoicer.pause();
             video.pause();
           });
-
-          let stop = false;
-
           el.addEventListener("mouseenter", function () {
-            stop = false;
-
             cursor1.setAttribute("material", "color: #0061AF");
-
-            if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "true");
-              textCounter.setAttribute("visible", "true");
-              textCounter.setAttribute("value", "3");
-
-              let contador = 3;
-              const interval = setInterval(() => {
-                if (stop == true) {
-                  console.log("se paro sepetirnamente");
-                  clearInterval(interval);
-                }
-                console.log(contador);
-                textCounter.setAttribute("value", `${contador}`);
-
-                contador--;
-
-                if (contador < 0) {
-                  clearInterval(interval);
-                  console.log("¡Tiempo terminado!");
-                }
-              }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
-            }
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
           });
           el.addEventListener("mouseleave", function () {
-            stop = true;
-
             cursor1.setAttribute("material", "color: white");
-            if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "false");
-              textCounter.setAttribute("visible", "false");
-              textCounter.setAttribute("value", "3");
-            }
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 500")
           });
@@ -706,63 +521,26 @@
           // var camerarotation = document.querySelector('#camerarotation')
           var audioBackgroud = document.querySelector("#audioBackgroud");
           var audioVoicer = document.querySelector("#audioVoicer");
-          var textCounter = document.querySelector("#text-counter");
-          var counter = document.querySelector("#counter");
 
           var el = this.el;
           el.addEventListener("click", function () {
             menuPause.setAttribute("visible", "false");
             menuPause.setAttribute("position", "0 25 0");
             video1.setAttribute("color", "");
-            butonPaused.setAttribute("position", "0 -3.1 0");
-    
+            butonPaused.setAttribute("position", "0 -3 0");
+            audioBackgroud.play();
+            audioVoicer.play();
             video.play();
           });
-
-          let stop = false;
-
           el.addEventListener("mouseenter", function () {
-            stop = false;
-
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
             butonContinue.setAttribute("opacity", "1.5");
             cursor1.setAttribute("material", "color: #0061AF");
-
-            if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "true");
-              textCounter.setAttribute("visible", "true");
-              textCounter.setAttribute("value", "3");
-
-              let contador = 3;
-              const interval = setInterval(() => {
-                if (stop == true) {
-                  console.log("se paro sepetirnamente");
-                  clearInterval(interval);
-                }
-                console.log(contador);
-                textCounter.setAttribute("value", `${contador}`);
-
-                contador--;
-
-                if (contador < 0) {
-                  clearInterval(interval);
-                  console.log("¡Tiempo terminado!");
-                }
-              }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
-            }
           });
           el.addEventListener("mouseleave", function () {
-            stop = true;
-
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 500")
             butonContinue.setAttribute("opacity", "0.5");
             cursor1.setAttribute("material", "color: white");
-
-            if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "false");
-              textCounter.setAttribute("visible", "false");
-              textCounter.setAttribute("value", "3");
-            }
           });
         },
       });
@@ -781,8 +559,6 @@
           var butonPaused = document.querySelector("#butonPaused");
           var buttonQuit = document.querySelector("#buttonQuit");
           var audioMainMenu = document.querySelector("#audioMainMenu");
-          var textCounter = document.querySelector("#text-counter");
-          var counter = document.querySelector("#counter");
 
           var el = this.el;
           el.addEventListener("click", function () {
@@ -799,49 +575,15 @@
             audioMainMenu.src = "./assets/audios/Main_Menu.mp3";
             audioMainMenu.play();
           });
-          let stop = false;
-
           el.addEventListener("mouseenter", function () {
-            stop = false;
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
             buttonQuit.setAttribute("opacity", "1.5");
             cursor1.setAttribute("material", "color: #0061AF");
-
-            if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "true");
-              textCounter.setAttribute("visible", "true");
-              textCounter.setAttribute("value", "3");
-
-              let contador = 3;
-              const interval = setInterval(() => {
-                if (stop == true) {
-                  console.log("se paro sepetirnamente");
-                  clearInterval(interval);
-                }
-                console.log(contador);
-                textCounter.setAttribute("value", `${contador}`);
-
-                contador--;
-
-                if (contador < 0) {
-                  clearInterval(interval);
-                  console.log("¡Tiempo terminado!");
-                }
-              }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
-            }
           });
           el.addEventListener("mouseleave", function () {
-            stop = true;
-
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 1500")
             buttonQuit.setAttribute("opacity", "0.5");
             cursor1.setAttribute("material", "color: white");
-
-            if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "false");
-              textCounter.setAttribute("visible", "false");
-              textCounter.setAttribute("value", "3");
-            }
           });
         },
       });
@@ -852,8 +594,7 @@
           var aboutVideo = document.querySelector("#aboutVideo");
           var miVideo = document.querySelector("#videoabout");
           var cursor1 = document.querySelector("#cursor1");
-          var counter = document.querySelector("#counter");
-          var textCounter = document.querySelector("#text-counter");
+          var notificacion = document.querySelector("#notificacion");
 
           var el = this.el;
           el.addEventListener("click", function () {
@@ -864,109 +605,21 @@
             miVideo.pause();
             miVideo.currentTime = 0;
           });
-
-          let stop = false;
-
           el.addEventListener("mouseenter", function () {
-            stop = false;
             el.setAttribute("opacity", "0.25");
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
             cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "true");
-              textCounter.setAttribute("visible", "true");
-              textCounter.setAttribute("value", "3");
-
-              let contador = 3;
-              const interval = setInterval(() => {
-                if (stop == true) {
-                  console.log("se paro sepetirnamente");
-                  clearInterval(interval);
-                }
-                console.log(contador);
-                textCounter.setAttribute("value", `${contador}`);
-
-                contador--;
-
-                if (contador < 0) {
-                  clearInterval(interval);
-                  console.log("¡Tiempo terminado!");
-                }
-              }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+              notificacion.setAttribute("visible", "true");
             }
           });
           el.addEventListener("mouseleave", function () {
-            stop = true;
-
             el.setAttribute("opacity", "0");
             cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "false");
-              textCounter.setAttribute("visible", "false");
-              textCounter.setAttribute("value", "3");
-            }
-
-            // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
-          });
-        },
-      });
-
-      AFRAME.registerComponent("event-setting", {
-        init: function () {
-          var el = this.el;
-          var mainMenu = document.querySelector("#mainMenu");
-          var settings1 = document.querySelector("#settings1");
-          var counter = document.querySelector("#counter");
-          var textCounter = document.querySelector("#text-counter");
-
-          el.addEventListener("click", function () {
-            mainMenu.setAttribute("position", "0 25 0");
-            mainMenu.setAttribute("visible", "false");
-            settings1.setAttribute("visible", "true");
-            settings1.setAttribute("position", "0 0 -2");
-          });
-          let stop = false;
-
-          el.addEventListener("mouseenter", function () {
-            stop = false;
-            el.setAttribute("opacity", "0.25");
-            // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
-            cursor1.setAttribute("material", "color: #0061AF");
-
-            if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "true");
-              textCounter.setAttribute("visible", "true");
-              textCounter.setAttribute("value", "3");
-
-              let contador = 3;
-              const interval = setInterval(() => {
-                if (stop == true) {
-                  console.log("se paro sepetirnamente");
-                  clearInterval(interval);
-                }
-                console.log(contador);
-                textCounter.setAttribute("value", `${contador}`);
-
-                contador--;
-
-                if (contador < 0) {
-                  clearInterval(interval);
-                  console.log("¡Tiempo terminado!");
-                }
-              }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
-            }
-          });
-          el.addEventListener("mouseleave", function () {
-            stop = true;
-            el.setAttribute("opacity", "0");
-            cursor1.setAttribute("material", "color: white");
-
-            if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "false");
-              textCounter.setAttribute("visible", "false");
-              textCounter.setAttribute("value", "3");
+              notificacion.setAttribute("visible", "false");
             }
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
@@ -1069,9 +722,8 @@
           var aboutVideo = document.querySelector("#aboutVideo");
           var miVideo = document.querySelector("#videoabout");
           var audioMainMenu = document.querySelector("#audioMainMenu");
-          var counter = document.querySelector("#counter");
+          var notificacion = document.querySelector("#notificacion");
           var cursor1 = document.querySelector("#cursor1");
-          var textCounter = document.querySelector("#text-counter");
 
           el.addEventListener("click", function () {
             mainMenu.setAttribute("position", "0 0 0");
@@ -1087,35 +739,58 @@
             cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "true");
-              textCounter.setAttribute("visible", "true");
-              textCounter.setAttribute("value", "3");
-
-              let contador = 3;
-              const interval = setInterval(() => {
-                if (stop == true) {
-                  console.log("se paro sepetirnamente");
-                  clearInterval(interval);
-                }
-                console.log(contador);
-                textCounter.setAttribute("value", `${contador}`);
-
-                contador--;
-
-                if (contador < 0) {
-                  clearInterval(interval);
-                  console.log("¡Tiempo terminado!");
-                }
-              }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+              notificacion.setAttribute("visible", "true");
             }
           });
           el.addEventListener("mouseleave", function () {
             cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "false");
-              textCounter.setAttribute("visible", "false");
-              textCounter.setAttribute("value", "3");
+              notificacion.setAttribute("visible", "false");
+            }
+
+            // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
+          });
+        },
+      });
+
+      // AFRAME.registerComponent("event-setting", {
+      //     init: function () {
+      //         el.addEventListener("click", function () {
+
+      //         })
+      //     }
+      // })
+
+      AFRAME.registerComponent("event-setting", {
+        init: function () {
+          var el = this.el;
+          var mainMenu = document.querySelector("#mainMenu");
+          var settings1 = document.querySelector("#settings1");
+          var notificacion = document.querySelector("#notificacion");
+
+          el.addEventListener("click", function () {
+            mainMenu.setAttribute("position", "0 25 0");
+            mainMenu.setAttribute("visible", "false");
+            settings1.setAttribute("visible", "true");
+            settings1.setAttribute("position", "0 0 -2");
+          });
+
+          el.addEventListener("mouseenter", function () {
+            el.setAttribute("opacity", "0.25");
+            // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
+            cursor1.setAttribute("material", "color: #0061AF");
+
+            if (cursor1.getAttribute("visible") == true) {
+              notificacion.setAttribute("visible", "true");
+            }
+          });
+          el.addEventListener("mouseleave", function () {
+            el.setAttribute("opacity", "0");
+            cursor1.setAttribute("material", "color: white");
+
+            if (cursor1.getAttribute("visible") == true) {
+              notificacion.setAttribute("visible", "false");
             }
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
@@ -1437,6 +1112,31 @@
         },
       });
 
+      // AFRAME.registerComponent("event-exit-app", {
+      //   init: function () {
+      //     var el = this.el;
+
+      //     var mainMenu = document.querySelector("#mainMenu");
+      //     var exitMenu = document.querySelector("#exitMenu");
+
+      //     el.addEventListener("click", function () {
+      //       console.log("estamos en cerrar app");
+      //       cerrarPestana();
+      //     });
+
+      //     function cerrarPestana() {
+      //       window.close();
+      //     }
+
+      //     el.addEventListener("mouseenter", function () {
+      //       el.setAttribute("opacity", "0.3");
+      //     });
+      //     el.addEventListener("mouseleave", function () {
+      //       el.setAttribute("opacity", "0.0");
+      //     });
+      //   },
+      // });
+
       AFRAME.registerComponent("event-start", {
         init: function () {
           var el = this.el;
@@ -1454,14 +1154,11 @@
           var butonPaused = document.querySelector("#butonPaused");
           // var camerarotation = document.querySelector('#camerarotation')
           var eventabout1 = document.querySelector("#eventabout1");
-          var counter = document.querySelector("#counter");
+          var notificacion = document.querySelector("#notificacion");
 
           var audioMainMenu = document.querySelector("#audioMainMenu");
           var audioBackgroud = document.querySelector("#audioBackgroud");
           var audioVoicer = document.querySelector("#audioVoicer");
-          var textCounter = document.querySelector("#text-counter");
-          var plano_externo = document.querySelector("#plano_externo");
-
           var el = this.el;
 
           // video1.addEventListener('ended', console.log('video terminado'));
@@ -1491,7 +1188,7 @@
             menuPause.setAttribute("position", "0 25 0");
 
             video1.setAttribute("event-videp-end", "");
-            butonPaused.setAttribute("position", "0 -3.1 0");
+            butonPaused.setAttribute("position", "0 -3 0");
             audioBackgroud.src =
               "./assets/audios/audios_backgroud_music/Snow_Scene_Background_Music.mp3";
             audioBackgroud.volume = 0 / 100;
@@ -1500,51 +1197,25 @@
             video.src = "./assets/videos/snow.mp4";
             video.volume = parseInt(videoAudio1) / 100;
             video.play();
- 
+            audioBackgroud.play();
+            audioVoicer.play();
           });
 
-          let stop = false;
-
           el.addEventListener("mouseenter", function () {
-            stop = false;
-            plano_externo.setAttribute("opacity", "0.25");
+            el.setAttribute("opacity", "0.25");
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
             cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "true");
-
-              textCounter.setAttribute("visible", "true");
-              textCounter.setAttribute("value", "3");
-
-              let contador = 3;
-              const interval = setInterval(() => {
-                if (stop == true) {
-                  console.log("se paro sepetirnamente");
-                  clearInterval(interval);
-                }
-                console.log(contador);
-                textCounter.setAttribute("value", `${contador}`);
-
-                contador--;
-
-                if (contador < 0) {
-                  clearInterval(interval);
-                  console.log("¡Tiempo terminado!");
-                }
-              }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+              notificacion.setAttribute("visible", "true");
             }
           });
           el.addEventListener("mouseleave", function () {
-            stop = true;
-
-            plano_externo.setAttribute("opacity", "0");
+            el.setAttribute("opacity", "0");
             cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
-              counter.setAttribute("visible", "false");
-              textCounter.setAttribute("visible", "false");
-              textCounter.setAttribute("value", "3");
+              notificacion.setAttribute("visible", "false");
             }
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
@@ -1626,7 +1297,8 @@
               video.src = videoList[currentVideoIndex];
               audioBackgroud.src = audioBackgroudList[currentVideoIndex];
               audioVoicer.src = voiceoversList[currentVideoIndex];
- 
+              audioBackgroud.play();
+              audioVoicer.play();
               video.play();
             } else {
               console.log("estamos en el else");
@@ -1795,12 +1467,6 @@
         <img id="masicon" crossorigin="anonymous" src="/assets/mas.png" />
         <img id="menosicon" crossorigin="anonymous" src="/assets/menos.png" />
         <img id="start" crossorigin="anonymous" src="/assets/Start.png" />
-        <img id="border" crossorigin="anonymous" src="/assets/retagulo.png" />
-        <img
-          id="border_white"
-          crossorigin="anonymous"
-          src="/assets/rectangle_white.png"
-        />
       </a-assets>
 
       <a-entity id="entity_camera" position="0 1.5 8">
@@ -1809,16 +1475,15 @@
           fov="50"
           reverse-mouse-drag="true"
           position="0 0 0"
-          wasd-controls-enabled="true"
+          wasd-controls-enabled="false"
         >
           <a-cursor
             id="cursor1"
-            material="color: white; shader: flat"
-            scale="2 2 2"
+            material="color: white"
+            scale="1.5 1.5 1.5"
             fuse="false"
-            fuse-timeout="4000"
-            objects=".interactable"
-            geometry="primitive: ring"
+            fuse-timeout="3000"
+            objects="none"
           ></a-cursor>
           <a-entity id="notificacion" visible="false">
             <a-plane
@@ -1837,16 +1502,6 @@
               position="0 1 -3"
             ></a-text>
           </a-entity>
-
-          <a-entity id="counter" visible="false">
-            <a-text
-              id="text-counter"
-              value="3"
-              width="3"
-              align="center"
-              position="-0 0 -3"
-            ></a-text>
-          </a-entity>
         </a-camera>
       </a-entity>
 
@@ -1857,7 +1512,7 @@
 
         <a-entity id="mainMenu" visible="true" position="0 0 0">
           <!-- curved principal -->
-          <!-- <a-curvedimage
+          <a-curvedimage
             height="2.5"
             radius="10"
             theta-length="30"
@@ -1867,264 +1522,23 @@
             opacity="0.65"
             color="#000000"
           >
-          </a-curvedimage> -->
-
-          <a-plane
-            color="#000000"
-            opacity="0.65"
-            height="5.50"
-            width="11"
-            position="0 1.50 0"
-            material="shader: flat; src: #border"
-          ></a-plane>
-
-          <a-plane
-            height="0.5"
-            width="2.25"
-            position="0 3.65 0.1"
-            color="#ffffff"
-            transparent="true"
-            material="shader: flat; src: #my-logo"
-          ></a-plane>
-
-          <a-plane
-            height="0.5"
-            width="1.5"
-            position="4.15 3.65 0.1"
-            color="#ffffff"
-            transparent="true"
-            material="shader: flat; src: #my-Settings"
-          ></a-plane>
-
-          <a-plane
-            height="0.5"
-            width="1.5"
-            position="4.12 3.62 0.2"
-            color="#FFFFFF"
-            opacity="0"
-            material="shader: flat; src: #border_white"
-            event-setting
-          ></a-plane>
-
-          <a-plane
-            height="0.5"
-            width="1.5"
-            position="-4.15 3.65 0.1"
-            color="#ffffff"
-            material="shader: flat; src: #my-About"
-            transparent="true"
-          ></a-plane>
-
-          <a-plane
-            height="0.5"
-            width="1.5"
-            position="-4.12 3.62 0.2"
-            color="#FFFFFF"
-            opacity="0"
-            material="shader: flat; src: #border_white"
-            event-about
-          ></a-plane>
-
-          <a-plane
-            height="2.25"
-            width="9.80"
-            transparent="true"
-            position="0 2 0.1"
-            color="#ffffff"
-            material="shader: flat; src: #start"
-            transparent="true"
-          ></a-plane>
-
-          <a-plane
-            id="plano_externo"
-            height="2.25"
-            width="9.80"
-            transparent="true"
-            position="0 2 0.2"
-            color="#FFFFFF"
-            opacity="0"
-            material="shader: flat; src: #border_white"
-            class="interactable"
-          ></a-plane>
-
-          <a-plane
-            height="1.50"
-            width="1.75"
-            transparent="true"
-            position="0 -0.15 0.1"
-            color="#ffffff"
-            material="shader: flat; src: #my-rain"
-            transparent="true"
-          ></a-plane>
-
-          <a-plane
-            id="plano_rain"
-            height="1.50"
-            width="1.75"
-            transparent="true"
-            position="0 -0.15 0.2"
-            color="#FFFFFF"
-            opacity="0"
-            material="shader: flat; src: #border_white"
-          ></a-plane>
-
-          <a-plane
-            height="1.5"
-            width="1.75"
-            transparent="true"
-            position="2 -0.15 0.1"
-            color="#ffffff"
-            material="shader: flat; src: #my-glare"
-            transparent="true"
-          ></a-plane>
-
-          <a-plane
-            id="plano_glare"
-            height="1.5"
-            width="1.75"
-            transparent="true"
-            position="1.98 -0.15 0.2"
-            color="#FFFFFF"
-            opacity="0"
-            material="shader: flat; src: #border_white"
-          ></a-plane>
-
-          <a-plane
-            height="1.5"
-            width="1.75"
-            transparent="true"
-            position="4 -0.15 0.1"
-            color="#ffffff"
-            material="shader: flat; src: #my-insects"
-            transparent="true"
-          ></a-plane>
-
-          <a-plane
-            id="plano_insects"
-            height="1.5"
-            width="1.75"
-            transparent="true"
-            position="3.95 -0.15 0.2"
-            color="#FFFFFF"
-            opacity="0"
-            material="shader: flat; src: #border_white"
-          ></a-plane>
-
-          <a-plane
-            height="1.5"
-            width="1.75"
-            transparent="true"
-            position="-2 -0.15 0.1"
-            color="#ffffff"
-            material="shader: flat; src: #my-Debris"
-            transparent="true"
-          ></a-plane>
-
-          <a-plane
-            id="plano_debris"
-            height="1.5"
-            width="1.75"
-            transparent="true"
-            position="-1.98 -0.15 0.2"
-            color="#FFFFFF"
-            material="shader: flat; src: #border_white"
-            opacity="0"
-          ></a-plane>
-
-          <a-plane
-            height="1.5"
-            width="1.75"
-            transparent="true"
-            position="-4 -0.15 0.1"
-            color="#ffffff"
-            material="shader: flat; src: #my-snow"
-            transparent="true"
-          ></a-plane>
-          <a-plane
-            id="plano_snow"
-            height="1.5"
-            width="1.75"
-            transparent="true"
-            position="-3.95 -0.15 0.2"
-            color="#FFFFFF"
-            opacity="0"
-            material="shader: flat; src: #border_white"
-          ></a-plane>
-
-          <a-plane
-            height="2.25"
-            width="9.80"
-            transparent="true"
-            position="0 2 0.5"
-            opacity="0"
-            event-start
-          ></a-plane>
-
-          <a-plane
-            height="1.5"
-            width="1.75"
-            transparent="true"
-            position="-3.85 -0.10 0.5"
-            color="#FFFFFF"
-            opacity="0"
-            event-snow
-          ></a-plane>
-
-          <a-plane
-            height="1.5"
-            width="1.75"
-            transparent="true"
-            position="-1.90 -0.08 0.5"
-            color="#FFFFFF"
-            opacity="0"
-            event-debris
-          ></a-plane>
-
-          <a-plane
-            height="1.50"
-            width="1.75"
-            transparent="true"
-            position="0 -0.15 0.5"
-            color="#FFFFFF"
-            opacity="0"
-            event-rain
-          ></a-plane>
-
-          <a-plane
-            height="1.5"
-            width="1.75"
-            transparent="true"
-            position="1.90 -0.08 0.5"
-            color="#FFFFFF"
-            opacity="0"
-            event-glare
-          ></a-plane>
-
-          <a-plane
-            height="1.5"
-            width="1.75"
-            transparent="true"
-            position="3.80 -0.10 0.5"
-            color="#FFFFFF"
-            opacity="0"
-            event-insects
-          ></a-plane>
+          </a-curvedimage>
 
           <!-- curved logo -->
-          <!-- <a-curvedimage
+          <a-curvedimage
+            material="shader: flat; src: #my-logo"
             height="1.30"
             radius="9.9"
             theta-length="40"
             rotation="0 160 0"
             scale="0.2 0.2 0.2"
             position="0 2.25 6"
-            material="shader: flat; src: #my-logo"
           >
-          </a-curvedimage> -->
+          </a-curvedimage>
 
           <!-- curved Settings -->
 
-          <!-- <a-curvedimage
+          <a-curvedimage
             material="shader: flat; src: #my-Settings"
             height="1"
             radius="9.9"
@@ -2145,12 +1559,12 @@
             position="1.47 2.24 6.30"
             event-setting
           >
-          </a-curvedimage> -->
+          </a-curvedimage>
 
           <!--end curved Settings -->
 
           <!-- curved About -->
-          <!-- 
+
           <a-curvedimage
             material="shader: flat; src: #my-About"
             height="1"
@@ -2172,13 +1586,13 @@
             opacity="0"
             event-about
           >
-          </a-curvedimage> -->
+          </a-curvedimage>
 
           <!--end curved About -->
 
           <!-- curved start -->
 
-          <!-- <a-curvedimage
+          <a-curvedimage
             height="3"
             radius="9.9"
             theta-length="72"
@@ -2199,12 +1613,12 @@
             opacity="0"
             event-start
           >
-          </a-curvedimage> -->
+          </a-curvedimage>
 
           <!--end curved start -->
           <!-- curved insects -->
 
-          <!-- <a-curvedimage
+          <a-curvedimage
             height="3"
             radius="9.9"
             theta-length="22.5"
@@ -2225,12 +1639,12 @@
             opacity="0"
             event-insects
           >
-          </a-curvedimage> -->
+          </a-curvedimage>
 
           <!--end curved insects -->
           <!-- curved glare -->
 
-          <!-- <a-curvedimage
+          <a-curvedimage
             height="3"
             radius="9.9"
             theta-length="22.5"
@@ -2251,13 +1665,13 @@
             opacity="0"
             event-glare
           >
-          </a-curvedimage> -->
+          </a-curvedimage>
 
           <!--end curved glare -->
 
           <!-- curved rain -->
 
-          <!-- <a-curvedimage
+          <a-curvedimage
             height="3"
             radius="9.9"
             theta-length="22.5"
@@ -2278,13 +1692,13 @@
             opacity="0"
             event-rain
           >
-          </a-curvedimage> -->
+          </a-curvedimage>
 
           <!--end curved rain -->
 
           <!-- curved Debris -->
 
-          <!-- <a-curvedimage
+          <a-curvedimage
             height="3"
             radius="9.9"
             theta-length="22.5"
@@ -2305,12 +1719,12 @@
             opacity="0"
             event-debris
           >
-          </a-curvedimage> -->
+          </a-curvedimage>
 
           <!--end curved Debris -->
           <!-- curved snow -->
 
-          <!-- <a-curvedimage
+          <a-curvedimage
             height="3"
             radius="9.9"
             theta-length="22.5"
@@ -2331,7 +1745,7 @@
             opacity="0"
             event-snow
           >
-          </a-curvedimage> -->
+          </a-curvedimage>
 
           <!--end curved snow -->
         </a-entity>
@@ -2672,10 +2086,10 @@
         <a-plane
           id="butonPaused"
           color="#fff"
-          height="2"
-          width="4"
+          height="4"
+          width="4.8"
           position="6 25 0.5"
-          opacity="0"
+          opacity="0.0"
           event-pause
         ></a-plane>
       </a-entity>
