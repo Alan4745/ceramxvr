@@ -1655,7 +1655,7 @@
             align-content: center;
           "
         >
-          <img id="imagenLogo" crossorigin="anonymous" src="assets/logo.png" />
+          <img id="imagenLogo" src="assets/images/logo.png" />
           <div>
             <h3
               style="
@@ -1744,26 +1744,30 @@
         ></audio>
         <img id="my-image" crossorigin="anonymous" src="/assets/bg.jpg" />
         <img id="my-id" crossorigin="anonymous" src="/assets/sky.png" />
-        <img id="my-snow" crossorigin="anonymous" src="assets/snow.png" />
-        <img id="my-Debris" crossorigin="anonymous" src="assets/Debris.png" />
+        <img id="my-snow" crossorigin="anonymous" src="/assets/snow.png" />
+        <img id="my-Debris" crossorigin="anonymous" src="/assets/Debris.png" />
         <img id="my-rain" crossorigin="anonymous" src="/assets/Rain.png" />
-        <img id="my-glare" crossorigin="anonymous" src="/assets/glare.png" />
+        <img id="my-glare" crossorigin="anonymous" src="/assets/Glare.png" />
 
         <img
           id="my-insects"
           crossorigin="anonymous"
-          src="/assets/Insects.png"
+          src="https://ceramxvr.com/assets/Insects.png"
         />
         <img
           id="my-Cardstart"
           crossorigin="anonymous"
           src="https://ceramxvr.com/assets/cardStart.png"
         />
-        <img id="my-logo" crossorigin="anonymous" src="assets/logo.png" />
+        <img
+          id="my-logo"
+          crossorigin="anonymous"
+          src="https://ceramxvr.com/assets/images/logo.png"
+        />
         <img
           id="my-Settings"
           crossorigin="anonymous"
-          src="assets/Settings.png"
+          src="https://ceramxvr.com/assets/Settings.png"
         />
         <img id="my-About" crossorigin="anonymous" src="/assets/About.png" />
 
@@ -1772,29 +1776,53 @@
         <img
           id="my-exit"
           crossorigin="anonymous"
-          src="assets/images/exit.png"
+          src="https://ceramxvr.com/assets/images/exit.png"
         />
         <!-- <img id="play" src="assets/images/test3.png"> -->
         <img
           id="cargador"
           crossorigin="anonymous"
-          src="/assets/images/cargador.png"
+          src="https://ceramxvr.com/assets/images/cargador.png"
         />
-        <img id="back" crossorigin="anonymous" src="assets/BACK.png" />
-        <img id="play" crossorigin="anonymous" src="assets/play.png" />
-        <img id="pause" crossorigin="anonymous" src="assets/pause.png" />
+        <img
+          id="back"
+          crossorigin="anonymous"
+          src="https://ceramxvr.com/assets/BACK.png"
+        />
+        <img
+          id="play"
+          crossorigin="anonymous"
+          src="https://ceramxvr.com/assets/play.png"
+        />
+        <img
+          id="pause"
+          crossorigin="anonymous"
+          src="https://ceramxvr.com/assets/pause.png"
+        />
         <img
           id="masicon"
           crossorigin="anonymous"
           src="https://ceramxvr.com/assets/mas.png"
         />
-        <img id="menosicon" crossorigin="anonymous" src="assets/menos.png" />
-        <img id="start" crossorigin="anonymous" src="assets/Start_prueba.png" />
-        <img id="border" crossorigin="anonymous" src="assets/retagulo.png" />
+        <img
+          id="menosicon"
+          crossorigin="anonymous"
+          src="https://ceramxvr.com/assets/menos.png"
+        />
+        <img
+          id="start"
+          crossorigin="anonymous"
+          src="https://raw.githubusercontent.com/Alan4745/ceramxvr/main/assets/Start.png"
+        />
+        <img
+          id="border"
+          crossorigin="anonymous"
+          src="https://raw.githubusercontent.com/Alan4745/ceramxvr/main/assets/retagulo.png"
+        />
         <img
           id="border_white"
           crossorigin="anonymous"
-          src="assets/rectangle_white.png"
+          src="https://raw.githubusercontent.com/Alan4745/ceramxvr/main/assets/rectangle_white.png"
         />
       </a-assets>
 
@@ -1987,30 +2015,32 @@
           <a-plane
             height="1.5"
             width="1.75"
+            transparent="true"
             position="4 -0.15 0.1"
             color="#ffffff"
             material="shader: flat; src: #my-insects"
-            transparent="false"
+            transparent="true"
           ></a-plane>
 
           <a-plane
             id="plano_insects"
             height="1.5"
             width="1.75"
-            transparent="false"
+            transparent="true"
             position="3.95 -0.15 0.2"
             color="#FFFFFF"
             opacity="0"
-            src="#border_white"
+            material="shader: flat; src: #border_white"
           ></a-plane>
 
           <a-plane
             height="1.5"
             width="1.75"
-            transparent="false"
+            transparent="true"
             position="-2 -0.15 0.1"
             color="#ffffff"
             material="shader: flat; src: #my-Debris"
+            transparent="true"
           ></a-plane>
 
           <a-plane
@@ -2027,10 +2057,11 @@
           <a-plane
             height="1.5"
             width="1.75"
-            transparent="false"
+            transparent="true"
             position="-4 -0.15 0.1"
             color="#ffffff"
             material="shader: flat; src: #my-snow"
+            transparent="true"
           ></a-plane>
           <a-plane
             id="plano_snow"
