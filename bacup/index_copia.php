@@ -2,21 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=0, minimal-ui"
-    />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/assets/ceramx.png" />
+    <meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
     <title>Ceramxvr</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
-
     <link rel="stylesheet" href="style/style.css" />
 
     <script>
@@ -35,7 +30,6 @@
 
           var textCounter = document.querySelector("#text-counter");
           var testVideo = document.querySelector("#testVideo");
-          var ring = document.querySelector("#ring");
           let scene3 = false;
 
           // var camerarotation = document.querySelector('#camerarotation')
@@ -63,14 +57,6 @@
             var audioVoicer1 = localStorage.getItem("audioVoicer");
             var videoAudio1 = localStorage.getItem("videoAudio");
 
-            console.log(ascene.is("vr-mode"), "estamos dentro del vr");
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
-
             video.setAttribute("esene", "true");
 
             audioMainMenu.pause();
@@ -80,6 +66,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
+            butonPaused.setAttribute("position", "0 -3.1 0");
 
             audioBackgroud.src =
               "./assets/audios/audios_backgroud_music/Snow_Scene_Background_Music.mp3";
@@ -99,7 +86,7 @@
             plano_snow.setAttribute("opacity", "0.25");
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
-            ring.setAttribute("material", "color: #0061AF");
+            cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -129,7 +116,7 @@
 
             plano_snow.setAttribute("opacity", "0");
 
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "false");
@@ -169,7 +156,6 @@
 
           var butonPaused = document.querySelector("#butonPaused");
           var textCounter = document.querySelector("#text-counter");
-          var ring = document.querySelector("#ring");
 
           let scene3 = false;
 
@@ -201,12 +187,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
+            butonPaused.setAttribute("position", "0 -3.1 0");
             audioMainMenu.pause();
 
             audioBackgroud.src =
@@ -227,7 +208,7 @@
             plano_debris.setAttribute("opacity", "0.25");
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
-            ring.setAttribute("material", "color: #0061AF");
+            cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -255,7 +236,7 @@
           el.addEventListener("mouseleave", function () {
             stop = true;
             plano_debris.setAttribute("opacity", "0");
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "false");
@@ -300,7 +281,6 @@
           var audioVoicer = document.querySelector("#audioVoicer");
           var textCounter = document.querySelector("#text-counter");
           var plano_rain = document.querySelector("#plano_rain");
-          var ring = document.querySelector("#ring");
 
           let scene3 = false;
 
@@ -323,13 +303,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
-
+            butonPaused.setAttribute("position", "0 -3.1 0");
             audioMainMenu.pause();
 
             audioBackgroud.src =
@@ -348,7 +322,7 @@
             stop = false;
             plano_rain.setAttribute("opacity", "0.25");
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
-            ring.setAttribute("material", "color: #0061AF");
+            cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -376,7 +350,7 @@
           el.addEventListener("mouseleave", function () {
             stop = true;
             plano_rain.setAttribute("opacity", "0");
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "false");
@@ -414,7 +388,6 @@
           var cursor1 = document.querySelector("#cursor1");
           var counter = document.querySelector("#counter");
           let scene3 = false;
-          var ring = document.querySelector("#ring");
 
           var textCounter = document.querySelector("#text-counter");
 
@@ -448,13 +421,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
-
+            butonPaused.setAttribute("position", "0 -3.1 0");
             audioBackgroud.src =
               "./assets/audios/audios_backgroud_music/Glare_Scene_Background_Music.mp3";
             audioBackgroud.volume = 0 / 100;
@@ -472,7 +439,7 @@
             stop = false;
             plano_glare.setAttribute("opacity", "0.25");
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
-            ring.setAttribute("material", "color: #0061AF");
+            cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -501,7 +468,7 @@
             stop = true;
 
             plano_glare.setAttribute("opacity", "0");
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "false");
@@ -544,8 +511,6 @@
           var eventabout1 = document.querySelector("#eventabout1");
           video.setAttribute("esene", "true");
 
-          var ring = document.querySelector("#ring");
-
           var audioMainMenu = document.querySelector("#audioMainMenu");
           var audioBackgroud = document.querySelector("#audioBackgroud");
           var audioVoicer = document.querySelector("#audioVoicer");
@@ -576,13 +541,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
-
+            butonPaused.setAttribute("position", "0 -3.1 0");
             audioBackgroud.src =
               "./assets/audios/audios_backgroud_music/Insects_Scene_Background_Music.mp3";
             audioBackgroud.volume = 0 / 100;
@@ -600,7 +559,7 @@
             stop = false;
             plano_insects.setAttribute("opacity", "0.25");
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
-            ring.setAttribute("material", "color: #0061AF");
+            cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -629,7 +588,7 @@
             stop = true;
 
             plano_insects.setAttribute("opacity", "0");
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "false");
@@ -672,7 +631,6 @@
           var counter = document.querySelector("#counter");
 
           var textCounter = document.querySelector("#text-counter");
-          cursor1.setAttribute("material", "color: white");
 
           var el = this.el;
           el.addEventListener("click", function () {
@@ -688,7 +646,7 @@
           el.addEventListener("mouseenter", function () {
             stop = false;
 
-            ring.setAttribute("material", "color: #0061AF");
+            cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -718,7 +676,7 @@
           el.addEventListener("mouseleave", function () {
             stop = true;
 
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "false");
               textCounter.setAttribute("visible", "false");
@@ -749,7 +707,6 @@
           var audioVoicer = document.querySelector("#audioVoicer");
           var textCounter = document.querySelector("#text-counter");
           var counter = document.querySelector("#counter");
-          cursor1.setAttribute("material", "color: white");
 
           var el = this.el;
           el.addEventListener("click", function () {
@@ -768,7 +725,7 @@
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
             butonContinue.setAttribute("opacity", "1.5");
-            ring.setAttribute("material", "color: #0061AF");
+            cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -798,7 +755,7 @@
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 500")
             butonContinue.setAttribute("opacity", "0.5");
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "false");
@@ -825,7 +782,6 @@
           var audioMainMenu = document.querySelector("#audioMainMenu");
           var textCounter = document.querySelector("#text-counter");
           var counter = document.querySelector("#counter");
-          cursor1.setAttribute("material", "color: white");
 
           var el = this.el;
           el.addEventListener("click", function () {
@@ -848,7 +804,7 @@
             stop = false;
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
             buttonQuit.setAttribute("opacity", "1.5");
-            ring.setAttribute("material", "color: #0061AF");
+            cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -878,7 +834,7 @@
 
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 1500")
             buttonQuit.setAttribute("opacity", "0.5");
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "false");
@@ -897,7 +853,6 @@
           var cursor1 = document.querySelector("#cursor1");
           var counter = document.querySelector("#counter");
           var textCounter = document.querySelector("#text-counter");
-          var ring = document.querySelector("#ring");
 
           var el = this.el;
           el.addEventListener("click", function () {
@@ -905,8 +860,6 @@
             mainMenu.setAttribute("visible", "false");
             aboutVideo.setAttribute("visible", "true");
             aboutVideo.setAttribute("position", "0 0 -2");
-            cursor1.setAttribute("fuse-timeout", "500");
-
             miVideo.pause();
             miVideo.currentTime = 0;
           });
@@ -946,7 +899,7 @@
             stop = true;
 
             el.setAttribute("opacity", "0");
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "false");
@@ -966,7 +919,6 @@
           var settings1 = document.querySelector("#settings1");
           var counter = document.querySelector("#counter");
           var textCounter = document.querySelector("#text-counter");
-          var ring = document.querySelector("#ring");
 
           el.addEventListener("click", function () {
             mainMenu.setAttribute("position", "0 25 0");
@@ -980,7 +932,7 @@
             stop = false;
             el.setAttribute("opacity", "0.25");
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
-            ring.setAttribute("material", "color: #0061AF");
+            cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -1008,7 +960,7 @@
           el.addEventListener("mouseleave", function () {
             stop = true;
             el.setAttribute("opacity", "0");
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "false");
@@ -1057,31 +1009,7 @@
           var valueVoice = document.querySelector("#valueVoice");
           var valueEffects = document.querySelector("#valueEffects");
           var entityCamera = document.querySelector("#entity_camera");
-          var boton = document.querySelector(".a-enter-vr");
-          var fullscreenButton = document.querySelector("#fullscreenButton");
-          var userAgent = navigator.userAgent.toLowerCase();
-          var ring = document.querySelector("#ring");
 
-          // Detectar el sistema operativo
-          if (userAgent.indexOf("android") !== -1) {
-            // Dispositivo Android
-            console.log("Dispositivo Android detectado");
-          } else if (
-            userAgent.indexOf("iphone") !== -1 ||
-            userAgent.indexOf("ipad") !== -1 ||
-            userAgent.indexOf("ipod") !== -1
-          ) {
-            // Dispositivo iOS
-            console.log("Dispositivo iOS (iPhone, iPad o iPod) detectado");
-            fullscreenButton.setAttribute("style", "display:none;");
-          } else {
-            // Otro sistema operativo móvil o no móvil
-            console.log(
-              "Sistema operativo móvil no reconocido o no es un dispositivo móvil"
-            );
-          }
-
-          const miElemento = document.querySelector(".a-enter-vr fullscreen");
           if (
             localStorage.getItem("audioMainMenu") !== null ||
             localStorage.getItem("audioBackgroud") !== null ||
@@ -1112,10 +1040,6 @@
 
           if (AFRAME.utils.device.isMobile() === false) {
             cursor1.setAttribute("visible", false);
-            ring.setAttribute("visible", false);
-            ascene.removeAttribute("vr-mode-ui");
-
-            console.log(miElemento, "boton");
           } else {
             var time = false;
             // ascene.removeAttribute("cursor");
@@ -1132,8 +1056,7 @@
               cursor1.removeAttribute("objects");
               cursor1.setAttribute("fuse", "true");
               cursor1.setAttribute("visible", "true");
-              ring.setAttribute("visible", true);
-            }, 6000);
+            }, 5000);
           }
         },
       });
@@ -1148,22 +1071,19 @@
           var counter = document.querySelector("#counter");
           var cursor1 = document.querySelector("#cursor1");
           var textCounter = document.querySelector("#text-counter");
-          var ring = document.querySelector("#ring");
 
           el.addEventListener("click", function () {
             mainMenu.setAttribute("position", "0 0 0");
             mainMenu.setAttribute("visible", "true");
             aboutVideo.setAttribute("visible", "false");
             aboutVideo.setAttribute("position", "0 25 -2");
-            cursor1.setAttribute("fuse-timeout", "4000");
-
             miVideo.pause();
             audioMainMenu.play();
           });
 
           el.addEventListener("mouseenter", function () {
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
-            ring.setAttribute("material", "color: #0061AF");
+            cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -1189,7 +1109,7 @@
             }
           });
           el.addEventListener("mouseleave", function () {
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "false");
@@ -1563,7 +1483,6 @@
           var miVideo = document.querySelector("#videoabout");
           var audioMainMenu = document.querySelector("#audioMainMenu");
           var textCounter = document.querySelector("#text-counter");
-          cursor1.setAttribute("material", "color: white");
 
           el.addEventListener("click", function () {
             mainMenu.setAttribute("position", "0 0 0");
@@ -1574,7 +1493,7 @@
 
           el.addEventListener("mouseenter", function () {
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
-            ring.setAttribute("material", "color: #0061AF");
+            cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -1600,7 +1519,7 @@
             }
           });
           el.addEventListener("mouseleave", function () {
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "false");
@@ -1619,7 +1538,6 @@
           var mainMenu = document.querySelector("#mainMenu");
           var exitMenu = document.querySelector("#exitMenu");
           var cursor1 = document.querySelector("#cursor1");
-          var ring = document.querySelector("#ring");
 
           el.addEventListener("click", function () {
             mainMenu.setAttribute("position", "0 25 0");
@@ -1630,11 +1548,11 @@
 
           el.addEventListener("mouseenter", function () {
             el.setAttribute("opacity", "0.3");
-            ring.setAttribute("material", "color: #0061AF");
+            cursor1.setAttribute("material", "color: #0061AF");
           });
           el.addEventListener("mouseleave", function () {
             el.setAttribute("opacity", "0.0");
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
           });
         },
       });
@@ -1686,7 +1604,6 @@
           var audioVoicer = document.querySelector("#audioVoicer");
           var textCounter = document.querySelector("#text-counter");
           var plano_externo = document.querySelector("#plano_externo");
-          var ring = document.querySelector("#ring");
 
           var el = this.el;
 
@@ -1717,12 +1634,7 @@
             menuPause.setAttribute("position", "0 25 0");
 
             video1.setAttribute("event-videp-end", "");
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
+            butonPaused.setAttribute("position", "0 -3.1 0");
             audioBackgroud.src =
               "./assets/audios/audios_backgroud_music/Snow_Scene_Background_Music.mp3";
             audioBackgroud.volume = 0 / 100;
@@ -1739,7 +1651,7 @@
             stop = false;
             plano_externo.setAttribute("opacity", "0.25");
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
-            ring.setAttribute("material", "color: #0061AF");
+            cursor1.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -1769,7 +1681,7 @@
             stop = true;
 
             plano_externo.setAttribute("opacity", "0");
-            ring.setAttribute("material", "color: white");
+            cursor1.setAttribute("material", "color: white");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "false");
@@ -2033,6 +1945,53 @@
           src="assets/rectangle_white.png"
         />
       </a-assets>
+
+      <a-entity id="entity_camera" position="0 1.5 8">
+        <a-camera
+          id="camera1"
+          fov="50"
+          reverse-mouse-drag="true"
+          position="0 0 0"
+          wasd-controls-enabled="true"
+        >
+          <a-cursor
+            id="cursor1"
+            material="color: white; shader: flat"
+            scale="2 2 2"
+            fuse="false"
+            fuse-timeout="4000"
+            objects=".interactable"
+            geometry="primitive: ring"
+          ></a-cursor>
+          <a-entity id="notificacion" visible="false">
+            <a-plane
+              color="#000000"
+              position="0  1 -3.1"
+              height="0.5"
+              width="1.5"
+              opacity="0.5"
+            ></a-plane>
+
+            <a-text
+              id="text-notificacion"
+              value="The scene will open in 3 seconds."
+              width="2"
+              align="center"
+              position="0 1 -3"
+            ></a-text>
+          </a-entity>
+
+          <a-entity id="counter" visible="false">
+            <a-text
+              id="text-counter"
+              value="3"
+              width="3"
+              align="center"
+              position="-0 0 -3"
+            ></a-text>
+          </a-entity>
+        </a-camera>
+      </a-entity>
 
       <a-entity id="scene1" visible="true" position="0 0 0">
         <!-- 
@@ -2676,6 +2635,8 @@
             transparent="true"
             height="0.5"
             width="0.5"
+            opacity="0.5"
+
             position="4 0.5 0.2"
             event-mas2
           ></a-plane>
@@ -2856,93 +2817,21 @@
           height="2"
           width="4"
           position="6 25 0.5"
-          opacity="0.0`"
+          opacity="0"
           event-pause
         ></a-plane>
       </a-entity>
-
       <button
         id="reset-button"
         style="position: absolute; top: 0px; z-index: 999; display: none"
       >
         reproducir video
       </button>
-
-      <div
-        id="fullscreenButton"
-        style="position: absolute; bottom: 20px; z-index: 999; right: 90px"
-      >
-        <img
-          id="fullscreenimg"
-          src="assets/fullscreen.png"
-          width="66"
-          height="34"
-          style="display: block"
-        />
-      </div>
-      <a-entity id="entity_camera" position="0 1.5 8">
-        <a-camera
-          id="camera1"
-          fov="50"
-          reverse-mouse-drag="true"
-          position="0 0 0"
-          wasd-controls-enabled="true"
-        >
-          <a-cursor
-            id="cursor1"
-            material="visible: true; opacity:0;"
-            scale="2 2 2"
-            fuse="false"
-            fuse-timeout="3000"
-            objects=".interactable"
-          ></a-cursor>
-          <a-entity id="notificacion" visible="false">
-            <a-plane
-              color="#000000"
-              position="0  1 -3.1"
-              height="0.5"
-              width="1.5"
-              opacity="0.5"
-            ></a-plane>
-
-            <a-text
-              id="text-notificacion"
-              value="The scene will open in 3 seconds."
-              width="2"
-              align="center"
-              position="0 1 -3"
-            ></a-text>
-          </a-entity>
-
-          <a-entity id="counter" visible="false">
-            <a-text
-              id="text-counter"
-              value="3"
-              width="3"
-              align="center"
-              position="-0 0 -2.5"
-            ></a-text>
-          </a-entity>
-
-          <a-ring
-            id="ring"
-            color="white"
-            radius-inner="0.1"
-            radius-outer="0.15"
-            position="-0 0 -3"
-          ></a-ring>
-        </a-camera>
-      </a-entity>
     </a-scene>
     <script>
       const videoElement = document.getElementById("videoabout");
       var scene2 = document.querySelector("#scene2");
       var video = document.querySelector("#testVideo");
-
-      var boton = document.querySelector("a-enter-vr-button");
-      var butonPaused = document.querySelector("#butonPaused");
-
-      console.log(boton);
 
       var resetButton = document.querySelector("#reset-button");
       function toggleVideo() {
@@ -2967,72 +2856,8 @@
             ("no esta dentro de la escena");
           }
 
-          console.log("ENTERED VR 1");
-          console.log(menuPause);
-          butonPaused.setAttribute("position", "0 -1.3 0");
+          console.log("ENTERED VR");
         });
-
-      document
-        .querySelector("a-scene")
-        .addEventListener("exit-vr", function () {
-          console.log("salimos del modo vr");
-          butonPaused.setAttribute("position", "0 -3.1 0");
-        });
-
-      function toggleFullscreen() {
-        var elem = document.documentElement; // Obtenemos el elemento raíz (HTML) de la página
-        var fullscreenimg = document.querySelector("#fullscreenimg");
-        if (
-          document.fullscreenElement ||
-          document.webkitFullscreenElement ||
-          document.mozFullScreenElement ||
-          document.msFullscreenElement
-        ) {
-          // Si ya estamos en pantalla completa, salimos de ella
-          if (document.exitFullscreen) {
-            fullscreenimg.setAttribute("src", "/assets/fullscreen.png");
-
-            document.exitFullscreen();
-          } else if (document.webkitExitFullscreen) {
-            fullscreenimg.setAttribute("src", "/assets/fullscreen.png");
-
-            document.webkitExitFullscreen();
-          } else if (document.mozCancelFullScreen) {
-            fullscreenimg.setAttribute("src", "/assets/fullscreen.png");
-
-            document.mozCancelFullScreen();
-          } else if (document.msExitFullscreen) {
-            fullscreenimg.setAttribute("src", "/assets/fullscreen.png");
-
-            document.msExitFullscreen();
-          }
-        } else {
-          // Si no estamos en pantalla completa, entramos a ella
-          if (elem.requestFullscreen) {
-            fullscreenimg.setAttribute("src", "/assets/exit.png");
-
-            elem.requestFullscreen();
-          } else if (elem.webkitRequestFullscreen) {
-            fullscreenimg.setAttribute("src", "/assets/exit.png");
-
-            elem.webkitRequestFullscreen();
-          } else if (elem.mozRequestFullScreen) {
-            fullscreenimg.setAttribute("src", "/assets/exit.png");
-
-            elem.mozRequestFullScreen();
-          } else if (elem.msRequestFullscreen) {
-            fullscreenimg.setAttribute("src", "/assets/exit.png");
-
-            elem.msRequestFullscreen();
-          }
-        }
-      }
-
-      // Evento click para el botón que activará el modo pantalla completa
-      var fullscreenButton = document.getElementById("fullscreenButton");
-      fullscreenButton.addEventListener("click", function () {
-        toggleFullscreen();
-      });
     </script>
     <script src="js/script.js"></script>
   </body>

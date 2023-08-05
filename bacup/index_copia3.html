@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" href="/assets/ceramx.png" />
     <title>Ceramxvr</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
 
     <link rel="stylesheet" href="style/style.css" />
@@ -63,14 +63,6 @@
             var audioVoicer1 = localStorage.getItem("audioVoicer");
             var videoAudio1 = localStorage.getItem("videoAudio");
 
-            console.log(ascene.is("vr-mode"), "estamos dentro del vr");
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
-
             video.setAttribute("esene", "true");
 
             audioMainMenu.pause();
@@ -80,6 +72,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
+            butonPaused.setAttribute("position", "0 -3.1 0");
 
             audioBackgroud.src =
               "./assets/audios/audios_backgroud_music/Snow_Scene_Background_Music.mp3";
@@ -201,12 +194,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
+            butonPaused.setAttribute("position", "0 -3.1 0");
             audioMainMenu.pause();
 
             audioBackgroud.src =
@@ -323,13 +311,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
-
+            butonPaused.setAttribute("position", "0 -3.1 0");
             audioMainMenu.pause();
 
             audioBackgroud.src =
@@ -448,13 +430,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
-
+            butonPaused.setAttribute("position", "0 -3.1 0");
             audioBackgroud.src =
               "./assets/audios/audios_backgroud_music/Glare_Scene_Background_Music.mp3";
             audioBackgroud.volume = 0 / 100;
@@ -576,13 +552,7 @@
             scene2.setAttribute("visible", "true");
             camera1.setAttribute("fov", "80");
             menuPause.setAttribute("position", "0 25 0");
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
-
+            butonPaused.setAttribute("position", "0 -3.1 0");
             audioBackgroud.src =
               "./assets/audios/audios_backgroud_music/Insects_Scene_Background_Music.mp3";
             audioBackgroud.volume = 0 / 100;
@@ -905,8 +875,6 @@
             mainMenu.setAttribute("visible", "false");
             aboutVideo.setAttribute("visible", "true");
             aboutVideo.setAttribute("position", "0 0 -2");
-            cursor1.setAttribute("fuse-timeout", "500");
-
             miVideo.pause();
             miVideo.currentTime = 0;
           });
@@ -918,6 +886,8 @@
             el.setAttribute("opacity", "0.25");
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
             cursor1.setAttribute("material", "color: #0061AF");
+
+            cursor1.setAttribute("fuse-timeout", "500");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -1113,7 +1083,6 @@
           if (AFRAME.utils.device.isMobile() === false) {
             cursor1.setAttribute("visible", false);
             ring.setAttribute("visible", false);
-            ascene.removeAttribute("vr-mode-ui");
 
             console.log(miElemento, "boton");
           } else {
@@ -1133,7 +1102,7 @@
               cursor1.setAttribute("fuse", "true");
               cursor1.setAttribute("visible", "true");
               ring.setAttribute("visible", true);
-            }, 6000);
+            }, 5000);
           }
         },
       });
@@ -1155,8 +1124,6 @@
             mainMenu.setAttribute("visible", "true");
             aboutVideo.setAttribute("visible", "false");
             aboutVideo.setAttribute("position", "0 25 -2");
-            cursor1.setAttribute("fuse-timeout", "4000");
-
             miVideo.pause();
             audioMainMenu.play();
           });
@@ -1169,6 +1136,7 @@
               counter.setAttribute("visible", "true");
               textCounter.setAttribute("visible", "true");
               textCounter.setAttribute("value", "3");
+              cursor1.setAttribute("fuse-timeout", "4000");
 
               let contador = 3;
               const interval = setInterval(() => {
@@ -1717,12 +1685,7 @@
             menuPause.setAttribute("position", "0 25 0");
 
             video1.setAttribute("event-videp-end", "");
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
+            butonPaused.setAttribute("position", "0 -3.1 0");
             audioBackgroud.src =
               "./assets/audios/audios_backgroud_music/Snow_Scene_Background_Music.mp3";
             audioBackgroud.volume = 0 / 100;
@@ -2856,7 +2819,7 @@
           height="2"
           width="4"
           position="6 25 0.5"
-          opacity="0.0`"
+          opacity="0"
           event-pause
         ></a-plane>
       </a-entity>
@@ -2893,7 +2856,7 @@
             material="visible: true; opacity:0;"
             scale="2 2 2"
             fuse="false"
-            fuse-timeout="3000"
+            fuse-timeout="4000"
             objects=".interactable"
           ></a-cursor>
           <a-entity id="notificacion" visible="false">
@@ -2940,8 +2903,6 @@
       var video = document.querySelector("#testVideo");
 
       var boton = document.querySelector("a-enter-vr-button");
-      var butonPaused = document.querySelector("#butonPaused");
-
       console.log(boton);
 
       var resetButton = document.querySelector("#reset-button");
@@ -2967,16 +2928,7 @@
             ("no esta dentro de la escena");
           }
 
-          console.log("ENTERED VR 1");
-          console.log(menuPause);
-          butonPaused.setAttribute("position", "0 -1.3 0");
-        });
-
-      document
-        .querySelector("a-scene")
-        .addEventListener("exit-vr", function () {
-          console.log("salimos del modo vr");
-          butonPaused.setAttribute("position", "0 -3.1 0");
+          console.log("ENTERED VR");
         });
 
       function toggleFullscreen() {
