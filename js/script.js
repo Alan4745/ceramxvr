@@ -10,6 +10,7 @@ window.onload = function () {
   var textStart = document.querySelector("#textStart");
   var miVideo = document.querySelector("#videoabout");
   var testVideo = document.querySelector("#testVideo");
+  var blouqeo = document.querySelector("#blouqeo");
 
   // var pared = document.querySelector("#pared");
   let test1 = false;
@@ -19,8 +20,8 @@ window.onload = function () {
       if (test1) {
         ascene.setAttribute("visible", "true");
         document.querySelector(".contenedor").style.display = "none";
-        console.log('estamos aqui');
-        localStorage.clear()
+        console.log("estamos aqui");
+        localStorage.clear();
         setTimeout(() => {
           // pared.setAttribute("position", "0 25 2");
         }, 3000);
@@ -46,16 +47,20 @@ window.onload = function () {
           localStorage.setItem("audioBackgroud", "20");
           localStorage.setItem("audioVoicer", "80");
           localStorage.setItem("videoAudio", "60");
-          miVideo.volume = 0.0
-          testVideo.play()
-          testVideo.pause()
-          miVideo.play()
-          miVideo.pause()
-
+          miVideo.volume = 0.0;
+          testVideo.play();
+          testVideo.pause();
+          miVideo.play();
+          miVideo.pause();
 
           audioMainMenu.play();
           audioMainMenu.volume =
             parseInt(localStorage.getItem("audioMainMenu")) / 100;
+
+          setTimeout(() => {
+            blouqeo.setAttribute("position", "0 25 0");
+            blouqeo.setAttribute("visible", "false");
+          }, 6000);
         }
       }
     });

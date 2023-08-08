@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" href="/assets/ceramx.png" />
     <title>Ceramxvr</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
 
     <link rel="stylesheet" href="style/style.css" />
@@ -2291,6 +2291,17 @@
             event-insects
           ></a-plane>
 
+          <a-plane
+            color="#000000"
+            opacity="1"
+            height="5.50"
+            width="11"
+            position="0 1.50 1"
+            material="shader: flat; src: #border"
+            visible="true"
+            id="blouqeo"
+          ></a-plane>
+
           <!-- curved logo -->
           <!-- <a-curvedimage
             height="1.30"
@@ -2922,6 +2933,14 @@
               align="center"
               position="-0 0 -2.5"
             ></a-text>
+            <a-text
+              value="3"
+              width="3"
+              align="center"
+              id="text-counter1"
+              visible="false"
+              position="-0 0 -2.5"
+            ></a-text>
           </a-entity>
 
           <a-ring
@@ -2938,10 +2957,11 @@
       const videoElement = document.getElementById("videoabout");
       var scene2 = document.querySelector("#scene2");
       var video = document.querySelector("#testVideo");
+      var userAgent = navigator.userAgent.toLowerCase();
 
       var boton = document.querySelector("a-enter-vr-button");
       var butonPaused = document.querySelector("#butonPaused");
-
+      var textCoun = document.querySelector("#text-counter1");
       console.log(boton);
 
       var resetButton = document.querySelector("#reset-button");
@@ -2970,6 +2990,20 @@
           console.log("ENTERED VR 1");
           console.log(menuPause);
           butonPaused.setAttribute("position", "0 -1.3 0");
+
+          // Detectar el sistema operativo
+          if (userAgent.indexOf("android") !== -1) {
+            // Dispositivo Android
+            console.log("Dispositivo Android detectado");
+          } else if (
+            userAgent.indexOf("iphone") !== -1 ||
+            userAgent.indexOf("ipad") !== -1 ||
+            userAgent.indexOf("ipod") !== -1
+          ) {
+            // Dispositivo iOS
+            console.log("Dispositivo iOS (iPhone, iPad o iPod) detectado");
+            textCoun.setAttribute("visible", "true");
+          }
         });
 
       document
@@ -2977,6 +3011,7 @@
         .addEventListener("exit-vr", function () {
           console.log("salimos del modo vr");
           butonPaused.setAttribute("position", "0 -3.1 0");
+          textCoun.setAttribute("visible", "false");
         });
 
       function toggleFullscreen() {
