@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <meta
@@ -917,7 +919,7 @@
             stop = false;
             el.setAttribute("opacity", "0.25");
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
-            cursor1.setAttribute("material", "color: #0061AF");
+            ring.setAttribute("material", "color: #0061AF");
 
             if (cursor1.getAttribute("visible") == true) {
               counter.setAttribute("visible", "true");
@@ -1061,6 +1063,7 @@
           var fullscreenButton = document.querySelector("#fullscreenButton");
           var userAgent = navigator.userAgent.toLowerCase();
           var ring = document.querySelector("#ring");
+          var counter = document.querySelector("#counter");
 
           // Detectar el sistema operativo
           if (userAgent.indexOf("android") !== -1) {
@@ -1111,8 +1114,11 @@
           }
 
           if (AFRAME.utils.device.isMobile() === false) {
-            cursor1.setAttribute("visible", false);
-            ring.setAttribute("visible", false);
+            cursor1.setAttribute("visible", true);
+            cursor1.setAttribute("position", "0 25 0");
+            ring.setAttribute("visible", true);
+            ring.setAttribute("position", "0 25 0");
+            counter.setAttribute("position", "0 26 0");
             ascene.removeAttribute("vr-mode-ui");
 
             console.log(miElemento, "boton");
@@ -1133,7 +1139,7 @@
               cursor1.setAttribute("fuse", "true");
               cursor1.setAttribute("visible", "true");
               ring.setAttribute("visible", true);
-            }, 6000);
+            }, 500);
           }
         },
       });
@@ -1233,22 +1239,22 @@
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
 
             // playPause.setAttribute('opacity', '')
-            playPause.setAttribute("opacity", "0.5");
+            playPause.setAttribute("opacity", "1");
             cursor1.setAttribute("material", "color: #0061AF");
 
-            setTimeout(() => {
-              playPause.setAttribute("opacity", "0.0");
-            }, 5000);
+            // setTimeout(() => {
+            //   playPause.setAttribute("opacity", "0.0");
+            // }, 5000);
           });
 
           el.addEventListener("mouseleave", function () {
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 1500")
-            playPause.setAttribute("opacity", "0.3");
+            playPause.setAttribute("opacity", "0.1");
             cursor1.setAttribute("material", "color: #ffffff");
 
-            setTimeout(() => {
-              playPause.setAttribute("opacity", "0.0");
-            }, 5000);
+            // setTimeout(() => {
+            //   playPause.setAttribute("opacity", "0.0");
+            // }, 5000);
           });
         },
       });
@@ -1890,7 +1896,23 @@
             align-content: center;
           "
         >
-          <img id="imagenLogo" crossorigin="anonymous" src="assets/logo.png" />
+          <div
+            style="
+              width: 400px;
+              height: 70px;
+              object-fit: cover;
+              justify-content: center;
+              vertical-align: middle;
+              align-content: center;
+            "
+          >
+            <img
+              style="width: 70%; height: 70%"
+              id="imagenLogo"
+              crossorigin="anonymous"
+              src="assets/logo.png"
+            />
+          </div>
           <div>
             <h3
               style="
@@ -1993,7 +2015,9 @@
           crossorigin="anonymous"
           src="https://ceramxvr.com/assets/cardStart.png"
         />
+
         <img id="my-logo" crossorigin="anonymous" src="assets/logo.png" />
+
         <img
           id="my-Settings"
           crossorigin="anonymous"
@@ -2001,14 +2025,11 @@
         />
         <img id="my-About" crossorigin="anonymous" src="/assets/About.png" />
 
-        <!-- <img id="my-about" src="assets/images/about.png" /> -->
-        <!-- <img id="my-settings" src="assets/images/settings.png"> -->
         <img
           id="my-exit"
           crossorigin="anonymous"
           src="assets/images/exit.png"
         />
-        <!-- <img id="play" src="assets/images/test3.png"> -->
         <img
           id="cargador"
           crossorigin="anonymous"
@@ -2033,24 +2054,7 @@
       </a-assets>
 
       <a-entity id="scene1" visible="true" position="0 0 0">
-        <!-- 
-            <a-curvedimage src="#my-logo" height="3.0" radius="5.6" theta-length="72" rotation="0 100 0"
-                scale="1 1 1"></a-curvedimage> -->
-
         <a-entity id="mainMenu" visible="true" position="0 0 0">
-          <!-- curved principal -->
-          <!-- <a-curvedimage
-            height="2.5"
-            radius="10"
-            theta-length="30"
-            rotation="0 165 0"
-            scale="1 1 1"
-            position="0 1.30 14"
-            opacity="0.65"
-            color="#000000"
-          >
-          </a-curvedimage> -->
-
           <a-plane
             color="#000000"
             opacity="0.65"
@@ -2061,8 +2065,8 @@
           ></a-plane>
 
           <a-plane
-            height="0.5"
-            width="2.25"
+            height="0.35"
+            width="2.00"
             position="0 3.65 0.1"
             color="#ffffff"
             transparent="true"
@@ -2126,7 +2130,6 @@
             color="#FFFFFF"
             opacity="0"
             material="shader: flat; src: #border_white"
-            class="interactable"
           ></a-plane>
 
           <a-plane
@@ -2299,231 +2302,6 @@
             visible="true"
             id="blouqeo"
           ></a-plane>
-
-          <!-- curved logo -->
-          <!-- <a-curvedimage
-            height="1.30"
-            radius="9.9"
-            theta-length="40"
-            rotation="0 160 0"
-            scale="0.2 0.2 0.2"
-            position="0 2.25 6"
-            material="shader: flat; src: #my-logo"
-          >
-          </a-curvedimage> -->
-
-          <!-- curved Settings -->
-
-          <!-- <a-curvedimage
-            material="shader: flat; src: #my-Settings"
-            height="1"
-            radius="9.9"
-            theta-length="20"
-            rotation="0 157.5 0"
-            scale="0.2 0.2 0.2"
-            position="1.50 2.25 6.25"
-          >
-          </a-curvedimage>
-          <a-curvedimage
-            height="1.1"
-            radius="9.9"
-            theta-length="20"
-            rotation="0 157.5 0"
-            scale="0.2 0.2 0.2"
-            color="#FFFFFF"
-            opacity="0"
-            position="1.47 2.24 6.30"
-            event-setting
-          >
-          </a-curvedimage> -->
-
-          <!--end curved Settings -->
-
-          <!-- curved About -->
-          <!-- 
-          <a-curvedimage
-            material="shader: flat; src: #my-About"
-            height="1"
-            radius="9.9"
-            theta-length="20"
-            rotation="0 180 0"
-            scale="0.2 0.2 0.2"
-            position="-1.5 2.25 6.25"
-          >
-          </a-curvedimage>
-          <a-curvedimage
-            height="1"
-            radius="9.9"
-            theta-length="20"
-            rotation="0 180 0"
-            scale="0.2 0.2 0.2"
-            position="-1.47 2.25 6.30"
-            color="#FFFFFF"
-            opacity="0"
-            event-about
-          >
-          </a-curvedimage> -->
-
-          <!--end curved About -->
-
-          <!-- curved start -->
-
-          <!-- <a-curvedimage
-            height="3"
-            radius="9.9"
-            theta-length="72"
-            rotation="0 143.5 0"
-            scale="0.3 0.3 0.3"
-            position="0 1.50 7.5"
-            material="shader: flat; src: #start"
-          >
-          </a-curvedimage>
-          <a-curvedimage
-            height="3.1"
-            radius="9.9"
-            theta-length="72"
-            rotation="0 143.5 0"
-            scale="0.3 0.3 0.3"
-            position="0 1.50 7.6"
-            color="#FFFFFF"
-            opacity="0"
-            event-start
-          >
-          </a-curvedimage> -->
-
-          <!--end curved start -->
-          <!-- curved insects -->
-
-          <!-- <a-curvedimage
-            height="3"
-            radius="9.9"
-            theta-length="22.5"
-            rotation="0 150 0"
-            scale="0.2 0.2 0.2"
-            position="1.10 0.6 6.3"
-            material="shader: flat; src: #my-insects"
-          >
-          </a-curvedimage>
-          <a-curvedimage
-            height="3"
-            radius="9.9"
-            theta-length="22.5"
-            rotation="0 150 0"
-            scale="0.2 0.2 0.2"
-            position="1.10 0.6 6.31"
-            color="#FFFFFF"
-            opacity="0"
-            event-insects
-          >
-          </a-curvedimage> -->
-
-          <!--end curved insects -->
-          <!-- curved glare -->
-
-          <!-- <a-curvedimage
-            height="3"
-            radius="9.9"
-            theta-length="22.5"
-            rotation="0 160 0"
-            scale="0.2 0.2 0.2"
-            position="0.6 0.6 6.2"
-            material="shader: flat; src: #my-glare"
-          >
-          </a-curvedimage>
-          <a-curvedimage
-            height="3"
-            radius="9.9"
-            theta-length="22.5"
-            rotation="0 160 0"
-            scale="0.2 0.2 0.2"
-            position="0.6 0.6 6.21"
-            color="#FFFFFF"
-            opacity="0"
-            event-glare
-          >
-          </a-curvedimage> -->
-
-          <!--end curved glare -->
-
-          <!-- curved rain -->
-
-          <!-- <a-curvedimage
-            height="3"
-            radius="9.9"
-            theta-length="22.5"
-            rotation="0 166 0"
-            scale="0.2 0.2 0.2"
-            position="-0.05 0.6 6.1"
-            material="shader: flat; src: #my-rain"
-          >
-          </a-curvedimage>
-          <a-curvedimage
-            height="3"
-            radius="9.9"
-            theta-length="22.5"
-            rotation="0 166 0"
-            scale="0.2 0.2 0.2"
-            position="-0.05 0.6 6.11"
-            color="#FFFFFF"
-            opacity="0"
-            event-rain
-          >
-          </a-curvedimage> -->
-
-          <!--end curved rain -->
-
-          <!-- curved Debris -->
-
-          <!-- <a-curvedimage
-            height="3"
-            radius="9.9"
-            theta-length="22.5"
-            rotation="0 180 0"
-            scale="0.2 0.2 0.2"
-            position="-0.42 0.6 6.15"
-            material="shader: flat; src: #my-Debris"
-          >
-          </a-curvedimage>
-          <a-curvedimage
-            height="3"
-            radius="9.9"
-            theta-length="22.5"
-            rotation="0 180 0"
-            scale="0.2 0.2 0.2"
-            position="-0.42 0.6 6.16"
-            color="#FFFFFF"
-            opacity="0"
-            event-debris
-          >
-          </a-curvedimage> -->
-
-          <!--end curved Debris -->
-          <!-- curved snow -->
-
-          <!-- <a-curvedimage
-            height="3"
-            radius="9.9"
-            theta-length="22.5"
-            rotation="0 190 0"
-            scale="0.2 0.2 0.2"
-            position="-0.9 0.6 6.30"
-            material="shader: flat; src: #my-snow"
-          >
-          </a-curvedimage>
-          <a-curvedimage
-            height="3"
-            radius="9.9"
-            theta-length="22.5"
-            rotation="0 190 0"
-            scale="0.2 0.2 0.2"
-            position="-0.9 0.6 6.31"
-            color="#FFFFFF"
-            opacity="0"
-            event-snow
-          >
-          </a-curvedimage> -->
-
-          <!--end curved snow -->
         </a-entity>
 
         <a-entity id="aboutVideo" position="0 25 -5" visible="false">
@@ -2534,14 +2312,6 @@
             width="11"
             position="0 0.5 0"
           ></a-plane>
-          <!-- <a-video
-            src="#videoabout"
-            height="4.25"
-            width="9"
-            position="0 1.25 0.2"
-            video-ended
-          ></a-video> -->
-
           <a-entity
             material="shader: flat; src: #videoabout"
             geometry="primitive: plane; width: 9; height: 4.25;"
@@ -2549,18 +2319,15 @@
             rotation="0 0 0"
           >
           </a-entity>
-
-          <a-plane
-            color="#FFFFFF"
+          <a-image
             id="playPause"
+            position="0 1.25 1"
             src="#play"
-            opacity="0.5"
-            height="0.5"
-            transparent="true"
             width="0.5"
-            position="0 1.25 0.6"
+            height="0.5"
             event-play-pause
-          ></a-plane>
+          ></a-image>
+
           <a-plane
             color="#1A5DA9"
             opacity="0.5"
@@ -2879,7 +2646,7 @@
 
       <div
         id="fullscreenButton"
-        style="position: absolute; bottom: 20px; z-index: 999; right: 90px"
+        style="position: absolute; bottom: 20px; z-index: 1; right: 90px"
       >
         <img
           id="fullscreenimg"
@@ -2903,7 +2670,7 @@
             scale="2 2 2"
             fuse="false"
             fuse-timeout="3000"
-            objects=".interactable"
+            objects="none"
           ></a-cursor>
           <a-entity id="notificacion" visible="false">
             <a-plane
@@ -2927,14 +2694,14 @@
             <a-text
               id="text-counter"
               value="3"
-              width="3"
+              width="2"
               align="center"
               position="-0 0 -2.5"
             ></a-text>
             <a-text
               id="text-counter1"
               value="3"
-              width="3"
+              width="2"
               align="center"
               visible="false"
               position="-0 -1 -2.5"
@@ -2944,10 +2711,9 @@
           <a-ring
             id="ring"
             color="white"
-            radius-inner="0.1"
-            radius-outer="0.15"
+            radius-inner="0.05"
+            radius-outer="0.07"
             position="-0 0 -3"
-            opacity="0.5"
           ></a-ring>
         </a-camera>
       </a-entity>
@@ -3017,6 +2783,7 @@
       function toggleFullscreen() {
         var elem = document.documentElement; // Obtenemos el elemento raíz (HTML) de la página
         var fullscreenimg = document.querySelector("#fullscreenimg");
+
         if (
           document.fullscreenElement ||
           document.webkitFullscreenElement ||
@@ -3065,6 +2832,13 @@
 
       // Evento click para el botón que activará el modo pantalla completa
       var fullscreenButton = document.getElementById("fullscreenButton");
+      console.log("Hey");
+      window.addEventListener("load", function () {
+        // This will scroll the page down by 1 pixel, triggering the address bar to hide
+        setTimeout(function () {
+          window.scrollTo(0, 1);
+        }, 0);
+      });
       fullscreenButton.addEventListener("click", function () {
         toggleFullscreen();
       });

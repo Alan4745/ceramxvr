@@ -24,7 +24,7 @@ window.onload = function () {
         localStorage.clear();
         setTimeout(() => {
           // pared.setAttribute("position", "0 25 2");
-        }, 3000);
+        }, 100);
         var test = localStorage.getItem("audioMainMenu");
         console.log(test, "test");
 
@@ -60,7 +60,7 @@ window.onload = function () {
           setTimeout(() => {
             blouqeo.setAttribute("position", "0 25 0");
             blouqeo.setAttribute("visible", "false");
-          }, 6000);
+          }, 500);
         }
       }
     });
