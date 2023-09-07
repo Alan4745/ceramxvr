@@ -34,10 +34,17 @@
           var cursor1 = document.querySelector("#cursor1");
           var ascene = document.querySelector("#ascene");
           var counter = document.querySelector("#counter");
+          var video1 = document.querySelector("#video1");
 
           var textCounter = document.querySelector("#text-counter");
           var testVideo = document.querySelector("#testVideo");
           var ring = document.querySelector("#ring");
+
+          var progress = document.querySelector("#progress");
+          var porcentaje = document.querySelector("#porcentaje");
+          var porcentaje1 = document.querySelector("#porcentaje1");
+          var progress_bar = document.querySelector("#progress_bar");
+
           let scene3 = false;
 
           // var camerarotation = document.querySelector('#camerarotation')
@@ -50,6 +57,8 @@
             document.querySelector("a-camera").components["look-controls"];
 
           var plano_snow = document.querySelector("#plano_snow");
+
+          var valor_verdaera = false;
 
           var el = this.el;
           el.addEventListener("click", function () {
@@ -90,7 +99,13 @@
             audioVoicer.volume = 0 / 100;
             video.src = "./assets/videos/snow.mp4";
             video.volume = 50 / 100;
+            video1.setAttribute("color", "#000000");
+            video.volume = 0;
             video.play();
+            valor_verdaera = true;
+            videoReiniciado = false;
+            progress_bar.setAttribute("visible", true);
+            progress_bar.setAttribute("position", "0 0 0");
           });
 
           let stop = false;
@@ -103,7 +118,7 @@
             // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
             ring.setAttribute("material", "color: #0061AF");
 
-            if (cursor1.getAttribute("visible") == true) {
+            if (cursor1.getAttribute("visible") !== true) {
               counter.setAttribute("visible", "true");
               textCounter.setAttribute("visible", "true");
               textCounter.setAttribute("value", "3");
@@ -155,6 +170,41 @@
 
             // Aquí puedes realizar las acciones que desees al finalizar el video
           }); // var videoElement = this.el.components.material.material.map.image;s
+
+          var videoReiniciado = false;
+
+          // Escuchamos el evento "progress" para mostrar el porcentaje de carga
+          video.addEventListener("progress", function () {
+            if (valor_verdaera) {
+              var buffered = video.buffered;
+              if (buffered.length > 0) {
+                var percent = (buffered.end(0) / video.duration) * 10;
+                console.log("Porcentaje de carga: " + percent.toFixed(3) + "%");
+                progress.setAttribute("width", `${percent.toFixed(3)}`);
+
+                porcentaje.setAttribute("value", `${percent.toFixed(1) * 10}%`);
+                porcentaje1.setAttribute(
+                  "value",
+                  `${percent.toFixed(1) * 10}%`
+                );
+                // Verificamos si el porcentaje es igual a 100 y si el video no se ha reiniciado
+                if (percent === 10 && !videoReiniciado) {
+                  console.log("El video está completamente cargado.");
+                  video1.setAttribute("color", "");
+
+                  // Reiniciar el video al inicio
+                  video.currentTime = 0;
+                  video.volume = 50 / 100;
+
+                  video.play();
+                  valor_verdaera = false;
+                  videoReiniciado = true; // Marcar que el video se ha reiniciado
+                  progress_bar.setAttribute("visible", false);
+                  progress_bar.setAttribute("position", "0 25 0");
+                }
+              }
+            }
+          });
         },
       });
 
@@ -218,8 +268,13 @@
               "./assets/audios/audios_voiceovers/Debris_Post.mp3";
             audioVoicer.volume = 0 / 100;
             video.src = "./assets/videos/debris.mp4";
-            video.volume = 50 / 100;
+            video1.setAttribute("color", "#000000");
+            video.volume = 0;
             video.play();
+            valor_verdaera = true;
+            videoReiniciado = false;
+            progress_bar.setAttribute("visible", true);
+            progress_bar.setAttribute("position", "0 0 0");
           });
 
           let stop = false;
@@ -280,6 +335,46 @@
             }
             // Aquí puedes realizar las acciones que desees al finalizar el video
           }); // var videoElement = this.el.components.material.material.map.image;s
+
+          var progress = document.querySelector("#progress");
+          var porcentaje = document.querySelector("#porcentaje");
+          var porcentaje1 = document.querySelector("#porcentaje1");
+          var progress_bar = document.querySelector("#progress_bar");
+          var videoReiniciado = false;
+          var valor_verdaera = false;
+
+          // Escuchamos el evento "progress" para mostrar el porcentaje de carga
+          video.addEventListener("progress", function () {
+            if (valor_verdaera) {
+              var buffered = video.buffered;
+              if (buffered.length > 0) {
+                var percent = (buffered.end(0) / video.duration) * 10;
+                console.log("Porcentaje de carga: " + percent.toFixed(3) + "%");
+                progress.setAttribute("width", `${percent.toFixed(3)}`);
+
+                porcentaje.setAttribute("value", `${percent.toFixed(1) * 10}%`);
+                porcentaje1.setAttribute(
+                  "value",
+                  `${percent.toFixed(1) * 10}%`
+                );
+                // Verificamos si el porcentaje es igual a 100 y si el video no se ha reiniciado
+                if (percent === 10 && !videoReiniciado) {
+                  console.log("El video está completamente cargado.");
+                  video1.setAttribute("color", "");
+
+                  // Reiniciar el video al inicio
+                  video.currentTime = 0;
+                  video.volume = 50 / 100;
+
+                  video.play();
+                  valor_verdaera = false;
+                  videoReiniciado = true; // Marcar que el video se ha reiniciado
+                  progress_bar.setAttribute("visible", false);
+                  progress_bar.setAttribute("position", "0 25 0");
+                }
+              }
+            }
+          });
         },
       });
 
@@ -340,8 +435,13 @@
             audioVoicer.src = "./assets/audios/audios_voiceovers/Rain_Post.mp3";
             audioVoicer.volume = 0 / 100;
             video.src = "./assets/videos/rain.mp4";
-            video.volume = 50 / 100;
+            video1.setAttribute("color", "#000000");
+            video.volume = 0;
             video.play();
+            valor_verdaera = true;
+            videoReiniciado = false;
+            progress_bar.setAttribute("visible", true);
+            progress_bar.setAttribute("position", "0 0 0");
           });
 
           let stop = false;
@@ -401,6 +501,46 @@
             }
             // Aquí puedes realizar las acciones que desees al finalizar el video
           }); // var videoElement = this.el.components.material.material.map.image;s
+
+          var progress = document.querySelector("#progress");
+          var porcentaje = document.querySelector("#porcentaje");
+          var porcentaje1 = document.querySelector("#porcentaje1");
+          var progress_bar = document.querySelector("#progress_bar");
+          var videoReiniciado = false;
+          var valor_verdaera = false;
+
+          // Escuchamos el evento "progress" para mostrar el porcentaje de carga
+          video.addEventListener("progress", function () {
+            if (valor_verdaera) {
+              var buffered = video.buffered;
+              if (buffered.length > 0) {
+                var percent = (buffered.end(0) / video.duration) * 10;
+                console.log("Porcentaje de carga: " + percent.toFixed(3) + "%");
+                progress.setAttribute("width", `${percent.toFixed(3)}`);
+
+                porcentaje.setAttribute("value", `${percent.toFixed(1) * 10}%`);
+                porcentaje1.setAttribute(
+                  "value",
+                  `${percent.toFixed(1) * 10}%`
+                );
+                // Verificamos si el porcentaje es igual a 100 y si el video no se ha reiniciado
+                if (percent === 10 && !videoReiniciado) {
+                  console.log("El video está completamente cargado.");
+                  video1.setAttribute("color", "");
+
+                  // Reiniciar el video al inicio
+                  video.currentTime = 0;
+                  video.volume = 50 / 100;
+
+                  video.play();
+                  valor_verdaera = false;
+                  videoReiniciado = true; // Marcar que el video se ha reiniciado
+                  progress_bar.setAttribute("visible", false);
+                  progress_bar.setAttribute("position", "0 25 0");
+                }
+              }
+            }
+          });
         },
       });
 
@@ -464,8 +604,13 @@
               "./assets/audios/audios_voiceovers/Glare_Post.mp3";
             audioVoicer.volume = 0 / 100;
             video.src = "./assets/videos/glare.mp4";
-            video.volume = 50 / 100;
+            video1.setAttribute("color", "#000000");
+            video.volume = 0;
             video.play();
+            valor_verdaera = true;
+            videoReiniciado = false;
+            progress_bar.setAttribute("visible", true);
+            progress_bar.setAttribute("position", "0 0 0");
           });
 
           let stop = false;
@@ -526,6 +671,44 @@
             }
             // Aquí puedes realizar las acciones que desees al finalizar el video
           }); // var videoElement = this.el.components.material.material.map.image;s
+
+          var progress = document.querySelector("#progress");
+          var porcentaje = document.querySelector("#porcentaje");
+          var porcentaje1 = document.querySelector("#porcentaje1");
+          var progress_bar = document.querySelector("#progress_bar");
+          var videoReiniciado = false;
+          var valor_verdaera = false;
+
+          // Escuchamos el evento "progress" para mostrar el porcentaje de carga
+          video.addEventListener("progress", function () {
+            if (valor_verdaera) {
+              var buffered = video.buffered;
+              if (buffered.length > 0) {
+                var percent = (buffered.end(0) / video.duration) * 10;
+                console.log("Porcentaje de carga: " + percent.toFixed(3) + "%");
+                progress.setAttribute("width", `${percent.toFixed(3)}`);
+
+                porcentaje.setAttribute("value", `${percent.toFixed(1) * 10}%`);
+                porcentaje1.setAttribute(
+                  "value",
+                  `${percent.toFixed(1) * 10}%`
+                );
+                // Verificamos si el porcentaje es igual a 100 y si el video no se ha reiniciado
+                if (percent === 10 && !videoReiniciado) {
+                  console.log("El video está completamente cargado.");
+                  video1.setAttribute("color", "");
+
+                  // Reiniciar el video al inicio
+                  video.currentTime = 0;
+                  video.play();
+                  valor_verdaera = false;
+                  videoReiniciado = true; // Marcar que el video se ha reiniciado
+                  progress_bar.setAttribute("visible", false);
+                  progress_bar.setAttribute("position", "0 25 0");
+                }
+              }
+            }
+          });
         },
       });
 
@@ -592,8 +775,14 @@
               "./assets/audios/audios_voiceovers/Insects_Post.mp3";
             audioVoicer.volume = 0 / 100;
             video.src = "./assets/videos/insects.mp4";
-            video.volume = 50 / 100;
+
+            video1.setAttribute("color", "#000000");
+            video.volume = 0;
             video.play();
+            valor_verdaera = true;
+            videoReiniciado = false;
+            progress_bar.setAttribute("visible", true);
+            progress_bar.setAttribute("position", "0 0 0");
           });
 
           let stop = false;
@@ -655,6 +844,46 @@
 
             // Aquí puedes realizar las acciones que desees al finalizar el video
           }); // var videoElement = this.el.components.material.material.map.image;s
+
+          var progress = document.querySelector("#progress");
+          var porcentaje = document.querySelector("#porcentaje");
+          var porcentaje1 = document.querySelector("#porcentaje1");
+          var progress_bar = document.querySelector("#progress_bar");
+          var videoReiniciado = false;
+          var valor_verdaera = false;
+
+          // Escuchamos el evento "progress" para mostrar el porcentaje de carga
+          video.addEventListener("progress", function () {
+            if (valor_verdaera) {
+              var buffered = video.buffered;
+              if (buffered.length > 0) {
+                var percent = (buffered.end(0) / video.duration) * 10;
+                console.log("Porcentaje de carga: " + percent.toFixed(3) + "%");
+                progress.setAttribute("width", `${percent.toFixed(3)}`);
+
+                porcentaje.setAttribute("value", `${percent.toFixed(1) * 10}%`);
+                porcentaje1.setAttribute(
+                  "value",
+                  `${percent.toFixed(1) * 10}%`
+                );
+                // Verificamos si el porcentaje es igual a 100 y si el video no se ha reiniciado
+                if (percent === 10 && !videoReiniciado) {
+                  console.log("El video está completamente cargado.");
+                  video1.setAttribute("color", "");
+
+                  // Reiniciar el video al inicio
+                  video.currentTime = 0;
+                  video.volume = 50 / 100;
+
+                  video.play();
+                  valor_verdaera = false;
+                  videoReiniciado = true; // Marcar que el video se ha reiniciado
+                  progress_bar.setAttribute("visible", false);
+                  progress_bar.setAttribute("position", "0 25 0");
+                }
+              }
+            }
+          });
         },
       });
 
@@ -2584,6 +2813,42 @@
           rotation="0 -90 0"
           src="#testVideo"
         ></a-videosphere>
+
+        <a-entity id="progress_bar" position="0 25 0" visible="false">
+          <a-plane
+            height="2"
+            width="10"
+            position="0 3 0"
+            color="#ffffff"
+            transparent="true"
+            material="shader: flat; src: #my-logo"
+          ></a-plane>
+
+          <a-plane
+            position="0 1.50 0"
+            id="progress"
+            color="#ffffff"
+            width="0.001"
+            height="0.25"
+          ></a-plane>
+
+          <a-text
+            id="porcentaje"
+            position="0 0.75 0.01"
+            align="center"
+            width="10"
+            value="0"
+          ></a-text>
+
+          <a-text
+            id="porcentaje1"
+            position="0 0.75 0"
+            align="center"
+            width="10"
+            value="0"
+          ></a-text>
+        </a-entity>
+
         <a-entity id="menuPause" position="0 25 0" visible="false">
           <a-plane
             color="#101010"
