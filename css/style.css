@@ -21,26 +21,26 @@ body {
 
 .a-dialog-allow-button {
   background-color: #0061af !important;
-  border-radius: 25px;
-  font-weight: 600;
+  border-radius: 25px !important;
+  font-weight: 600 !important;
 
   color: #fff;
 }
 
 .a-dialog-deny-button {
-  background-color: #aeadae;
-  border-radius: 25px;
-  font-weight: 600;
+  background-color: #aeadae !important;
+  border-radius: 25px !important;
+  font-weight: 600 !important;
 
-  color: #fff;
+  color: #fff !important;
 }
 
 .a-dialog-text {
-  color: #0061af;
-  font-family: Arial, sans-serif;
-  font-weight: 400;
-  text-align: center;
-  text-transform: uppercase;
+  color: #0061af !important;
+  font-family: Arial, sans-serif !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
 }
 
 /* .a-enter-vr.fullscreen .a-enter-vr-button {

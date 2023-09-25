@@ -1099,7 +1099,7 @@
 
         // Mostrar el botón en todos los dispositivos móviles
         const isMobileDevice =
-          /|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          /webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
             navigator.userAgent
           );
 
@@ -1108,6 +1108,8 @@
             const installButton = document.getElementById("mostrarPopup");
             console.log("estamos");
             installButton.style.display = "none";
+          } else {
+            mostrarPopupBtn.style.display = "block";
           }
         }
       });
