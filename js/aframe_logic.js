@@ -10,20 +10,12 @@ AFRAME.registerComponent("event-snow", {
     var butonPaused = document.querySelector("#butonPaused");
     var ascene = document.querySelector("#ascene");
     var counter = document.querySelector("#counter");
-    var video1 = document.querySelector("#video1");
     var textCounter = document.querySelector("#text-counter");
     var testVideo = document.querySelector("#testVideo");
     var ring = document.querySelector("#ring");
-    var progress = document.querySelector("#progress");
-    var porcentaje = document.querySelector("#porcentaje");
-    var porcentaje1 = document.querySelector("#porcentaje1");
-    var progress_bar = document.querySelector("#progress_bar");
     var audioMainMenu = document.querySelector("#audioMainMenu");
     var audioMainMenu = document.querySelector("#audioMainMenu");
-    var audioBackgroud = document.querySelector("#audioBackgroud");
-    var audioVoicer = document.querySelector("#audioVoicer");
     var plano_snow = document.querySelector("#plano_snow");
-    var valor_verdaera = false;
 
     var el = this.el;
     el.addEventListener("click", function () {
@@ -45,21 +37,45 @@ AFRAME.registerComponent("event-snow", {
       scene2.setAttribute("rotation", "0 0 0");
       scene2.setAttribute("visible", "true");
       camera1.setAttribute("fov", "80");
-      menuPause.setAttribute("position", "0 0 0");
+      menuPause.setAttribute("position", "0 25 0");
 
-      audioBackgroud.src =
-        "./assets/audios/audios_backgroud_music/Snow_Scene_Background_Music.mp3";
-      audioBackgroud.volume = 0 / 100;
-      audioVoicer.src = "./assets/audios/audios_voiceovers/Snow_Post.mp3";
-      audioVoicer.volume = 0 / 100;
-      video.src = "./assets/videos/snow.mp4";
       if (ascene.is("vr-mode")) {
         butonPaused.setAttribute("position", "0 -1.3 0");
       } else {
         butonPaused.setAttribute("position", "0 -3.1 0");
       }
-      video.volume = 0.5;
-      video.play();
+
+      if (Hls.isSupported()) {
+        const hls = new Hls({
+          enableWorker: true,
+          lowLatencyMode: true,
+          backBufferLength: 90,
+        });
+
+        hls.loadSource("/assets/encode/encode_snow/snow.m3u8");
+        hls.attachMedia(video);
+
+        hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+          console.log("video and hls.js are now bound together !");
+        });
+        hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+          console.log(data);
+          console.log(event);
+          console.log(
+            "manifest loaded, found " + data.levels.length + " quality level"
+          );
+        });
+        video.volume = 0.5;
+        video.play();
+      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = "/assets/encode/encode_snow/snow.m3u8";
+        video.volume = 0.5;
+        video.play();
+      } else {
+        video.innerHTML = "El navegador no admite la reproducción de HLS.";
+      }
+
+      // video.src = "./assets/videos/snow.mp4";
     });
 
     let stop = false;
@@ -131,8 +147,6 @@ AFRAME.registerComponent("event-debris", {
     var ring = document.querySelector("#ring");
 
     var audioMainMenu = document.querySelector("#audioMainMenu");
-    var audioBackgroud = document.querySelector("#audioBackgroud");
-    var audioVoicer = document.querySelector("#audioVoicer");
 
     var plano_debris = document.querySelector("#plano_debris");
 
@@ -152,23 +166,43 @@ AFRAME.registerComponent("event-debris", {
       scene2.setAttribute("visible", "true");
       camera1.setAttribute("fov", "80");
       menuPause.setAttribute("position", "0 25 0");
-
       audioMainMenu.pause();
-
-      audioBackgroud.src =
-        "./assets/audios/audios_backgroud_music/Debris_Scene_Background_Music.mp3";
-      audioBackgroud.volume = 0 / 100;
-      audioVoicer.src = "./assets/audios/audios_voiceovers/Debris_Post.mp3";
-      audioVoicer.volume = 0 / 100;
-      video.src = "./assets/videos/debris.mp4";
 
       if (ascene.is("vr-mode")) {
         butonPaused.setAttribute("position", "0 -1.3 0");
       } else {
         butonPaused.setAttribute("position", "0 -3.1 0");
       }
-      video.volume = 0.5;
-      video.play();
+
+      if (Hls.isSupported()) {
+        const hls = new Hls({
+          enableWorker: true,
+          lowLatencyMode: true,
+          backBufferLength: 90,
+        });
+
+        hls.loadSource("/assets/encode/encode_debris/debris.m3u8");
+        hls.attachMedia(video);
+
+        hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+          console.log("video and hls.js are now bound together !");
+        });
+        hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+          console.log(data);
+          console.log(event);
+          console.log(
+            "manifest loaded, found " + data.levels.length + " quality level"
+          );
+        });
+        video.volume = 0.5;
+        video.play();
+      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = "/assets/encode/encode_debris/debris.m3u8";
+        video.volume = 0.5;
+        video.play();
+      } else {
+        video.innerHTML = "El navegador no admite la reproducción de HLS.";
+      }
     });
 
     let stop = false;
@@ -234,18 +268,10 @@ AFRAME.registerComponent("event-rain", {
     var scene2 = document.querySelector("#scene2");
     var video = document.querySelector("#testVideo");
     var camera1 = document.querySelector("#camera1");
-    var hover3 = document.querySelector("#hover3");
     var menuPause = document.querySelector("#menuPause");
-    // var cursor1 = document.querySelector('#cursor1');
     var butonPaused = document.querySelector("#butonPaused");
-    // var camerarotation = document.querySelector('#camerarotation')
-    var cursor1 = document.querySelector("#cursor1");
     var counter = document.querySelector("#counter");
-    var video1 = document.querySelector("#video1");
-
     var audioMainMenu = document.querySelector("#audioMainMenu");
-    var audioBackgroud = document.querySelector("#audioBackgroud");
-    var audioVoicer = document.querySelector("#audioVoicer");
     var textCounter = document.querySelector("#text-counter");
     var plano_rain = document.querySelector("#plano_rain");
     var ring = document.querySelector("#ring");
@@ -269,21 +295,41 @@ AFRAME.registerComponent("event-rain", {
       menuPause.setAttribute("position", "0 25 0");
 
       audioMainMenu.pause();
-
-      audioBackgroud.src =
-        "./assets/audios/audios_backgroud_music/Rain_Scene_Background_Music.mp3";
-      audioBackgroud.volume = 0 / 100;
-      audioVoicer.src = "./assets/audios/audios_voiceovers/Rain_Post.mp3";
-      audioVoicer.volume = 0 / 100;
-      video.src = "./assets/videos/rain.mp4";
       if (ascene.is("vr-mode")) {
         butonPaused.setAttribute("position", "0 -1.3 0");
       } else {
         butonPaused.setAttribute("position", "0 -3.1 0");
       }
 
-      video.volume = 0.5;
-      video.play();
+      if (Hls.isSupported()) {
+        const hls = new Hls({
+          enableWorker: true,
+          lowLatencyMode: true,
+          backBufferLength: 90,
+        });
+
+        hls.loadSource("/assets/encode/encode_rain/rain.m3u8");
+        hls.attachMedia(video);
+
+        hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+          console.log("video and hls.js are now bound together !");
+        });
+        hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+          console.log(data);
+          console.log(event);
+          console.log(
+            "manifest loaded, found " + data.levels.length + " quality level"
+          );
+        });
+        video.volume = 0.5;
+        video.play();
+      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = "/assets/encode/encode_rain/rain.m3u8";
+        video.volume = 0.5;
+        video.play();
+      } else {
+        video.innerHTML = "El navegador no admite la reproducción de HLS.";
+      }
     });
 
     let stop = false;
@@ -291,7 +337,6 @@ AFRAME.registerComponent("event-rain", {
     el.addEventListener("mouseenter", function () {
       stop = false;
       plano_rain.setAttribute("opacity", "0.25");
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
       ring.setAttribute("material", "color: #0061AF");
 
       if (ring.getAttribute("visible") == true) {
@@ -314,21 +359,18 @@ AFRAME.registerComponent("event-rain", {
             clearInterval(interval);
             console.log("¡Tiempo terminado!");
           }
-        }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+        }, 1000);
       }
     });
     el.addEventListener("mouseleave", function () {
       stop = true;
       plano_rain.setAttribute("opacity", "0");
       ring.setAttribute("material", "color: white");
-
       if (ring.getAttribute("visible") == true) {
         counter.setAttribute("visible", "false");
         textCounter.setAttribute("visible", "false");
         textCounter.setAttribute("value", "3");
       }
-
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
     });
 
     testVideo.addEventListener("ended", function () {
@@ -341,32 +383,22 @@ AFRAME.registerComponent("event-rain", {
         camera1.setAttribute("fov", "50");
         audioMainMenu.play();
       }
-      // Aquí puedes realizar las acciones que desees al finalizar el video
-    }); // var videoElement = this.el.components.material.material.map.image;s
+    });
   },
 });
 
 AFRAME.registerComponent("event-glare", {
   init: function () {
-    var mainMenu = document.querySelector("#mainMenu");
     var scene1 = document.querySelector("#scene1");
     var scene2 = document.querySelector("#scene2");
     var video = document.querySelector("#testVideo");
     var camera1 = document.querySelector("#camera1");
-    var hover4 = document.querySelector("#hover4");
     var menuPause = document.querySelector("#menuPause");
-    var cursor1 = document.querySelector("#cursor1");
     var counter = document.querySelector("#counter");
     let scene3 = false;
     var ring = document.querySelector("#ring");
-    var video1 = document.querySelector("#video1");
-
     var textCounter = document.querySelector("#text-counter");
-
     var butonPaused = document.querySelector("#butonPaused");
-    // var camerarotation = document.querySelector('#camerarotation')
-    var eventabout1 = document.querySelector("#eventabout1");
-
     var plano_glare = document.querySelector("#plano_glare");
 
     var el = this.el;
@@ -375,14 +407,9 @@ AFRAME.registerComponent("event-glare", {
         document.querySelector("a-camera").components["look-controls"];
       controls.pitchObject.rotation.x = 0;
       controls.yawObject.rotation.y = 0;
-
       scene3 = true;
       video.setAttribute("esene", "true");
       console.log(video.getAttribute("esene"));
-
-      var audioBackgroud1 = localStorage.getItem("audioBackgroud");
-      var audioVoicer1 = localStorage.getItem("audioVoicer");
-      var videoAudio1 = localStorage.getItem("videoAudio");
 
       audioMainMenu.pause();
       scene1.setAttribute("visible", "false");
@@ -394,19 +421,41 @@ AFRAME.registerComponent("event-glare", {
       camera1.setAttribute("fov", "80");
       menuPause.setAttribute("position", "0 25 0");
 
-      audioBackgroud.src =
-        "./assets/audios/audios_backgroud_music/Glare_Scene_Background_Music.mp3";
-      audioBackgroud.volume = 0 / 100;
-      audioVoicer.src = "./assets/audios/audios_voiceovers/Glare_Post.mp3";
-      audioVoicer.volume = 0 / 100;
-      video.src = "./assets/videos/glare.mp4";
       if (ascene.is("vr-mode")) {
         butonPaused.setAttribute("position", "0 -1.3 0");
       } else {
         butonPaused.setAttribute("position", "0 -3.1 0");
       }
-      video.volume = 0.5;
-      video.play();
+
+      if (Hls.isSupported()) {
+        const hls = new Hls({
+          enableWorker: true,
+          lowLatencyMode: true,
+          backBufferLength: 90,
+        });
+
+        hls.loadSource("/assets/encode/encode_glare/glare.m3u8");
+        hls.attachMedia(video);
+
+        hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+          console.log("video and hls.js are now bound together !");
+        });
+        hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+          console.log(data);
+          console.log(event);
+          console.log(
+            "manifest loaded, found " + data.levels.length + " quality level"
+          );
+        });
+        video.volume = 0.5;
+        video.play();
+      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = "/assets/encode/encode_glare/glare.m3u8";
+        video.volume = 0.5;
+        video.play();
+      } else {
+        video.innerHTML = "El navegador no admite la reproducción de HLS.";
+      }
     });
 
     let stop = false;
@@ -437,7 +486,7 @@ AFRAME.registerComponent("event-glare", {
             clearInterval(interval);
             console.log("¡Tiempo terminado!");
           }
-        }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+        }, 1000);
       }
     });
     el.addEventListener("mouseleave", function () {
@@ -451,8 +500,6 @@ AFRAME.registerComponent("event-glare", {
         textCounter.setAttribute("visible", "false");
         textCounter.setAttribute("value", "3");
       }
-
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
     });
 
     testVideo.addEventListener("ended", function () {
@@ -465,8 +512,7 @@ AFRAME.registerComponent("event-glare", {
         camera1.setAttribute("fov", "50");
         audioMainMenu.play();
       }
-      // Aquí puedes realizar las acciones que desees al finalizar el video
-    }); // var videoElement = this.el.components.material.material.map.image;s
+    });
   },
 });
 
@@ -476,23 +522,14 @@ AFRAME.registerComponent("event-insects", {
     var scene2 = document.querySelector("#scene2");
     var video = document.querySelector("#testVideo");
     var camera1 = document.querySelector("#camera1");
-    var hover4 = document.querySelector("#hover4");
     var menuPause = document.querySelector("#menuPause");
-    // var cursor1 = document.querySelector('#cursor1');
-    var cursor1 = document.querySelector("#cursor1");
     var counter = document.querySelector("#counter");
-    var video1 = document.querySelector("#video1");
 
     var butonPaused = document.querySelector("#butonPaused");
-    // var camerarotation = document.querySelector('#camerarotation')
-    var eventabout1 = document.querySelector("#eventabout1");
     video.setAttribute("esene", "true");
 
     var ring = document.querySelector("#ring");
-
     var audioMainMenu = document.querySelector("#audioMainMenu");
-    var audioBackgroud = document.querySelector("#audioBackgroud");
-    var audioVoicer = document.querySelector("#audioVoicer");
     var textCounter = document.querySelector("#text-counter");
     var plano_insects = document.querySelector("#plano_insects");
 
@@ -507,13 +544,8 @@ AFRAME.registerComponent("event-insects", {
       controls.yawObject.rotation.y = 0;
       scene3 = true;
 
-      var audioBackgroud1 = localStorage.getItem("audioBackgroud");
-      var audioVoicer1 = localStorage.getItem("audioVoicer");
-      var videoAudio1 = localStorage.getItem("videoAudio");
-
       audioMainMenu.pause();
       scene1.setAttribute("visible", "false");
-      // scene1.setAttribute('rotation', "0 100 0")
       scene1.setAttribute("visible", "false");
       scene1.setAttribute("position", "0 15 0");
       scene2.setAttribute("rotation", "0 0 0");
@@ -521,19 +553,41 @@ AFRAME.registerComponent("event-insects", {
       camera1.setAttribute("fov", "80");
       menuPause.setAttribute("position", "0 25 0");
 
-      audioBackgroud.src =
-        "./assets/audios/audios_backgroud_music/Insects_Scene_Background_Music.mp3";
-      audioBackgroud.volume = 0 / 100;
-      audioVoicer.src = "./assets/audios/audios_voiceovers/Insects_Post.mp3";
-      audioVoicer.volume = 0 / 100;
-      video.src = "./assets/videos/insects.mp4";
       if (ascene.is("vr-mode")) {
         butonPaused.setAttribute("position", "0 -1.3 0");
       } else {
         butonPaused.setAttribute("position", "0 -3.1 0");
       }
-      video.volume = 0.5;
-      video.play();
+
+      if (Hls.isSupported()) {
+        const hls = new Hls({
+          enableWorker: true,
+          lowLatencyMode: true,
+          backBufferLength: 90,
+        });
+
+        hls.loadSource("/assets/encode/encode_insects/insects.m3u8");
+        hls.attachMedia(video);
+
+        hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+          console.log("video and hls.js are now bound together !");
+        });
+        hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+          console.log(data);
+          console.log(event);
+          console.log(
+            "manifest loaded, found " + data.levels.length + " quality level"
+          );
+        });
+        video.volume = 0.5;
+        video.play();
+      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = "/assets/encode/encode_insects/insects.m3u8";
+        video.volume = 0.5;
+        video.play();
+      } else {
+        video.innerHTML = "El navegador no admite la reproducción de HLS.";
+      }
     });
 
     let stop = false;
@@ -541,7 +595,6 @@ AFRAME.registerComponent("event-insects", {
     el.addEventListener("mouseenter", function () {
       stop = false;
       plano_insects.setAttribute("opacity", "0.25");
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
       ring.setAttribute("material", "color: #0061AF");
 
       if (ring.getAttribute("visible") == true) {
@@ -564,7 +617,7 @@ AFRAME.registerComponent("event-insects", {
             clearInterval(interval);
             console.log("¡Tiempo terminado!");
           }
-        }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+        }, 1000);
       }
     });
     el.addEventListener("mouseleave", function () {
@@ -578,23 +631,18 @@ AFRAME.registerComponent("event-insects", {
         textCounter.setAttribute("visible", "false");
         textCounter.setAttribute("value", "3");
       }
-
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
     });
 
     testVideo.addEventListener("ended", function () {
       if (video.getAttribute("esene") == "true") {
         console.log("temino de video glare");
-
         scene1.setAttribute("visible", "true");
         scene1.setAttribute("position", "0 0 0");
         scene2.setAttribute("visible", "false");
         camera1.setAttribute("fov", "50");
         audioMainMenu.play();
       }
-
-      // Aquí puedes realizar las acciones que desees al finalizar el video
-    }); // var videoElement = this.el.components.material.material.map.image;s
+    });
   },
 });
 
@@ -608,27 +656,15 @@ AFRAME.registerComponent("event-start", {
     var scene2 = document.querySelector("#scene2");
     var video = document.querySelector("#testVideo");
     var camera1 = document.querySelector("#camera1");
-    var hover4 = document.querySelector("#hover4");
     var menuPause = document.querySelector("#menuPause");
-    let escene5 = true;
-    // var cursor1 = document.querySelector('#cursor1');
-    var cursor1 = document.querySelector("#cursor1");
-
     var butonPaused = document.querySelector("#butonPaused");
-    // var camerarotation = document.querySelector('#camerarotation')
-    var eventabout1 = document.querySelector("#eventabout1");
     var counter = document.querySelector("#counter");
-
     var audioMainMenu = document.querySelector("#audioMainMenu");
-    var audioBackgroud = document.querySelector("#audioBackgroud");
-    var audioVoicer = document.querySelector("#audioVoicer");
     var textCounter = document.querySelector("#text-counter");
     var plano_externo = document.querySelector("#plano_externo");
     var ring = document.querySelector("#ring");
 
     var el = this.el;
-
-    // video1.addEventListener('ended', console.log('video terminado'));
 
     el.addEventListener("click", function () {
       let controls =
@@ -637,16 +673,12 @@ AFRAME.registerComponent("event-start", {
       controls.yawObject.rotation.y = 0;
 
       video.setAttribute("esene", "false");
-
-      var audioBackgroud1 = localStorage.getItem("audioBackgroud");
-      var audioVoicer1 = localStorage.getItem("audioVoicer");
       var videoAudio1 = localStorage.getItem("videoAudio");
       console.log(video.getAttribute("esene") == "false");
       console.log(video.getAttribute("esene") == "true");
 
       audioMainMenu.pause();
       scene1.setAttribute("visible", "false");
-      // scene1.setAttribute('rotation', "0 100 0")
       scene1.setAttribute("visible", "false");
       scene1.setAttribute("position", "0 15 0");
       scene2.setAttribute("rotation", "0 0 0");
@@ -662,14 +694,36 @@ AFRAME.registerComponent("event-start", {
       } else {
         butonPaused.setAttribute("position", "0 -3.1 0");
       }
-      audioBackgroud.src =
-        "./assets/audios/audios_backgroud_music/Snow_Scene_Background_Music.mp3";
-      audioBackgroud.volume = 0 / 100;
-      audioVoicer.src = "./assets/audios/audios_voiceovers/Snow_Post.mp3";
-      audioVoicer.volume = 0 / 100;
-      video.src = "./assets/videos/snow.mp4";
-      video.volume = parseInt(videoAudio1) / 100;
-      video.play();
+
+      if (Hls.isSupported()) {
+        const hls = new Hls({
+          enableWorker: true,
+          lowLatencyMode: true,
+          backBufferLength: 90,
+        });
+
+        hls.loadSource("/assets/encode/encode_snow/snow.m3u8");
+        hls.attachMedia(video);
+
+        hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+          console.log("video and hls.js are now bound together !");
+        });
+        hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+          console.log(data);
+          console.log(event);
+          console.log(
+            "manifest loaded, found " + data.levels.length + " quality level"
+          );
+        });
+        video.volume = 0.5;
+        video.play();
+      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = "/assets/encode/encode_snow/snow.m3u8";
+        video.volume = 0.5;
+        video.play();
+      } else {
+        video.innerHTML = "El navegador no admite la reproducción de HLS.";
+      }
     });
 
     let stop = false;
@@ -677,7 +731,6 @@ AFRAME.registerComponent("event-start", {
     el.addEventListener("mouseenter", function () {
       stop = false;
       plano_externo.setAttribute("opacity", "0.25");
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
       ring.setAttribute("material", "color: #0061AF");
 
       if (ring.getAttribute("visible") == true) {
@@ -701,7 +754,7 @@ AFRAME.registerComponent("event-start", {
             clearInterval(interval);
             console.log("¡Tiempo terminado!");
           }
-        }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+        }, 1000);
       }
     });
     el.addEventListener("mouseleave", function () {
@@ -715,25 +768,16 @@ AFRAME.registerComponent("event-start", {
         textCounter.setAttribute("visible", "false");
         textCounter.setAttribute("value", "3");
       }
-
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
     });
   },
 });
 
 AFRAME.registerComponent("event-pause", {
   init: function () {
-    var scene1 = document.querySelector("#scene1");
-    var scene2 = document.querySelector("#scene2");
     var video = document.querySelector("#testVideo");
-    var camera1 = document.querySelector("#camera1");
     var menuPause = document.querySelector("#menuPause");
     var video1 = document.querySelector("#video1");
-    // var cursor1 = document.querySelector('#cursor1');
     var cursor1 = document.querySelector("#cursor1");
-
-    var audioBackgroud = document.querySelector("#audioBackgroud");
-    var audioVoicer = document.querySelector("#audioVoicer");
     var counter = document.querySelector("#counter");
 
     var textCounter = document.querySelector("#text-counter");
@@ -775,10 +819,8 @@ AFRAME.registerComponent("event-pause", {
             clearInterval(interval);
             console.log("¡Tiempo terminado!");
           }
-        }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+        }, 1000);
       }
-
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
     });
     el.addEventListener("mouseleave", function () {
       stop = true;
@@ -789,29 +831,19 @@ AFRAME.registerComponent("event-pause", {
         textCounter.setAttribute("visible", "false");
         textCounter.setAttribute("value", "3");
       }
-
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 500")
     });
   },
 });
 
 AFRAME.registerComponent("event-continue", {
   init: function () {
-    var scene1 = document.querySelector("#scene1");
-    var scene2 = document.querySelector("#scene2");
     var video = document.querySelector("#testVideo");
-    var camera1 = document.querySelector("#camera1");
     var menuPause = document.querySelector("#menuPause");
     var video1 = document.querySelector("#video1");
-    // var cursor1 = document.querySelector('#cursor1');
     var cursor1 = document.querySelector("#cursor1");
 
     var butonPaused = document.querySelector("#butonPaused");
     var butonContinue = document.querySelector("#butonContinue");
-    var buttonQuit = document.querySelector("#buttonQuit");
-    // var camerarotation = document.querySelector('#camerarotation')
-    var audioBackgroud = document.querySelector("#audioBackgroud");
-    var audioVoicer = document.querySelector("#audioVoicer");
     var textCounter = document.querySelector("#text-counter");
     var counter = document.querySelector("#counter");
     cursor1.setAttribute("material", "color: white");
@@ -831,7 +863,6 @@ AFRAME.registerComponent("event-continue", {
     el.addEventListener("mouseenter", function () {
       stop = false;
 
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
       butonContinue.setAttribute("opacity", "1.5");
       ring.setAttribute("material", "color: #0061AF");
 
@@ -855,13 +886,12 @@ AFRAME.registerComponent("event-continue", {
             clearInterval(interval);
             console.log("¡Tiempo terminado!");
           }
-        }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+        }, 1000);
       }
     });
     el.addEventListener("mouseleave", function () {
       stop = true;
 
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 500")
       butonContinue.setAttribute("opacity", "0.5");
       ring.setAttribute("material", "color: white");
 
@@ -901,7 +931,6 @@ AFRAME.registerComponent("event-about", {
     el.addEventListener("mouseenter", function () {
       stop = false;
       el.setAttribute("opacity", "0.25");
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
       ring.setAttribute("material", "color: #0061AF");
 
       if (ring.getAttribute("visible") == true) {
@@ -924,22 +953,18 @@ AFRAME.registerComponent("event-about", {
             clearInterval(interval);
             console.log("¡Tiempo terminado!");
           }
-        }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+        }, 1000);
       }
     });
     el.addEventListener("mouseleave", function () {
       stop = true;
-
       el.setAttribute("opacity", "0");
       ring.setAttribute("material", "color: white");
-
       if (ring.getAttribute("visible") == true) {
         counter.setAttribute("visible", "false");
         textCounter.setAttribute("visible", "false");
         textCounter.setAttribute("value", "3");
       }
-
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
     });
   },
 });
@@ -964,7 +989,6 @@ AFRAME.registerComponent("event-setting", {
     el.addEventListener("mouseenter", function () {
       stop = false;
       el.setAttribute("opacity", "0.25");
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
       ring.setAttribute("material", "color: #0061AF");
 
       if (ring.getAttribute("visible") == true) {
@@ -987,7 +1011,7 @@ AFRAME.registerComponent("event-setting", {
             clearInterval(interval);
             console.log("¡Tiempo terminado!");
           }
-        }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+        }, 1000);
       }
     });
     el.addEventListener("mouseleave", function () {
@@ -1000,8 +1024,6 @@ AFRAME.registerComponent("event-setting", {
         textCounter.setAttribute("visible", "false");
         textCounter.setAttribute("value", "3");
       }
-
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
     });
   },
 });
@@ -1010,27 +1032,11 @@ AFRAME.registerComponent("video-ended", {
   init: function () {
     var el = this.el;
     var miVideo = document.querySelector("#videoabout");
-    var videoPause = true;
     var audioMainMenu = document.querySelector("#audioMainMenu");
-    var playPause = document.querySelector("#playPause");
-
-    // el.addEventListener("click", function () {
-    //     audioMainMenu.pause()
-    //     // miVideo.play();
-
-    // });
 
     miVideo.addEventListener("ended", function () {
-      // El video ha terminado de reproducirse
       audioMainMenu.play();
-
-      // Aquí puedes realizar las acciones que desees al finalizar el video
-    }); // var videoElement = this.el.components.material.material.map.image;
-
-    // videoElement.onended = function () {
-    //   var mensajeFinVideo = document.getElementById("mensajeFinVideo");
-    //   mensajeFinVideo.setAttribute("visible", "true");
-    // };
+    });
   },
 });
 
@@ -1042,7 +1048,6 @@ AFRAME.registerComponent("event-quit", {
     var camera1 = document.querySelector("#camera1");
     var menuPause = document.querySelector("#menuPause");
     var video1 = document.querySelector("#video1");
-    // var cursor1 = document.querySelector('#cursor1');
     var cursor1 = document.querySelector("#cursor1");
 
     var butonPaused = document.querySelector("#butonPaused");
@@ -1063,7 +1068,6 @@ AFRAME.registerComponent("event-quit", {
       scene2.setAttribute("visible", "false");
       camera1.setAttribute("fov", "50");
       butonPaused.setAttribute("position", "0 25 0");
-      // camerarotation.setAttribute('rotation', '0 0 0')
       audioMainMenu.src = "./assets/audios/Main_Menu.mp3";
       audioMainMenu.play();
     });
@@ -1071,7 +1075,6 @@ AFRAME.registerComponent("event-quit", {
 
     el.addEventListener("mouseenter", function () {
       stop = false;
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
       buttonQuit.setAttribute("opacity", "1.5");
       ring.setAttribute("material", "color: #0061AF");
 
@@ -1095,13 +1098,12 @@ AFRAME.registerComponent("event-quit", {
             clearInterval(interval);
             console.log("¡Tiempo terminado!");
           }
-        }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+        }, 1000);
       }
     });
     el.addEventListener("mouseleave", function () {
       stop = true;
 
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 1500")
       buttonQuit.setAttribute("opacity", "0.5");
       ring.setAttribute("material", "color: white");
 
@@ -1121,8 +1123,7 @@ AFRAME.registerComponent("mobile1", {
     var valueBack = document.querySelector("#valueBack");
     var valueVoice = document.querySelector("#valueVoice");
     var valueEffects = document.querySelector("#valueEffects");
-    var entityCamera = document.querySelector("#entity_camera");
-    var boton = document.querySelector(".a-enter-vr");
+
     var fullscreenButton = document.querySelector("#fullscreenButton");
     var userAgent = navigator.userAgent.toLowerCase();
     var ring = document.querySelector("#ring");
@@ -1154,7 +1155,6 @@ AFRAME.registerComponent("mobile1", {
       localStorage.getItem("audioVoicer") !== null ||
       localStorage.getItem("videoAudio") !== null
     ) {
-      var audiomenu1 = localStorage.getItem("audioMainMenu");
       var audioBackgroud2 = localStorage.getItem("audioBackgroud");
       var audioVoicer3 = localStorage.getItem("audioVoicer");
       var videoAudio = localStorage.getItem("videoAudio");
@@ -1167,7 +1167,6 @@ AFRAME.registerComponent("mobile1", {
       localStorage.setItem("audioBackgroud", "20");
       localStorage.setItem("audioVoicer", "75");
       localStorage.setItem("videoAudio", "50");
-      var audiomenu1 = localStorage.getItem("audioMainMenu");
       var audioBackgroud2 = localStorage.getItem("audioBackgroud");
       var audioVoicer3 = localStorage.getItem("audioVoicer");
       var videoAudio = localStorage.getItem("videoAudio");
@@ -1231,7 +1230,6 @@ AFRAME.registerComponent("event-back", {
     });
 
     el.addEventListener("mouseenter", function () {
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
       ring.setAttribute("material", "color: #0061AF");
 
       if (ring.getAttribute("visible") == true) {
@@ -1254,7 +1252,7 @@ AFRAME.registerComponent("event-back", {
             clearInterval(interval);
             console.log("¡Tiempo terminado!");
           }
-        }, 1000); // Mostrará el contador cada 1 segundo (1000 milisegundos)
+        }, 1000);
       }
     });
     el.addEventListener("mouseleave", function () {
@@ -1265,8 +1263,6 @@ AFRAME.registerComponent("event-back", {
         textCounter.setAttribute("visible", "false");
         textCounter.setAttribute("value", "3");
       }
-
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 150")
     });
   },
 });
@@ -1299,25 +1295,13 @@ AFRAME.registerComponent("event-play-pause", {
     });
 
     el.addEventListener("mouseenter", function () {
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 720; dur: 1500")
-
-      // playPause.setAttribute('opacity', '')
       playPause.setAttribute("opacity", "1");
       cursor1.setAttribute("material", "color: #0061AF");
-
-      // setTimeout(() => {
-      //   playPause.setAttribute("opacity", "0.0");
-      // }, 5000);
     });
 
     el.addEventListener("mouseleave", function () {
-      // cursor1.setAttribute('animation__rotation', "property: rotation; to: 0 0 0; dur: 1500")
       playPause.setAttribute("opacity", "0.1");
       cursor1.setAttribute("material", "color: #ffffff");
-
-      // setTimeout(() => {
-      //   playPause.setAttribute("opacity", "0.0");
-      // }, 5000);
     });
   },
 });
@@ -1745,27 +1729,12 @@ AFRAME.registerComponent("event-videp-end", {
     var ecenes4 = false;
 
     var videoList = [
-      "./assets/videos/debris.mp4",
-      "./assets/videos/debris.mp4",
-      "./assets/videos/rain.mp4",
-      "./assets/videos/glare.mp4",
-      "./assets/videos/insects.mp4",
-    ]; // Lista de videos a reproducir en secuencia
-    var audioBackgroudList = [
-      "./assets/audios/audios_backgroud_music/Debris_Scene_Background_Music.mp3",
-      "./assets/audios/audios_backgroud_music/Debris_Scene_Background_Music.mp3",
-      "./assets/audios/audios_backgroud_music/Rain_Scene_Background_Music.mp3",
-      "./assets/audios/audios_backgroud_music/Glare_Scene_Background_Music.mp3",
-      "./assets/audios/audios_backgroud_music/Insects_Scene_Background_Music.mp3",
+      "/assets/encode/encode_debris/debris.m3u8",
+      "/assets/encode/encode_rain/rain.m3u8",
+      "/assets/encode/encode_glare/glare.m3u8",
+      "/assets/encode/encode_insects/insects.m3u8",
     ];
 
-    var voiceoversList = [
-      "./assets/audios/audios_voiceovers/Debris_Post.mp3",
-      "./assets/audios/audios_voiceovers/Debris_Post.mp3",
-      "./assets/audios/audios_voiceovers/Rain_Post.mp3",
-      "./assets/audios/audios_voiceovers/Glare_Post.mp3",
-      "./assets/audios/audios_voiceovers/Insects_Post.mp3",
-    ];
     var currentVideoIndex = 0;
     var testVideo = document.querySelector("#testVideo");
 
@@ -1796,16 +1765,29 @@ AFRAME.registerComponent("event-videp-end", {
     }); // var videoElement = this.el.components.material.material.map.image;
 
     function playNextVideo() {
-      console.log("video inicioado");
-      currentVideoIndex++;
       if (currentVideoIndex < videoList.length) {
-        console.log("estamos dentro del if");
-        console.log(currentVideoIndex);
-        video.src = videoList[currentVideoIndex];
-        audioBackgroud.src = audioBackgroudList[currentVideoIndex];
-        audioVoicer.src = voiceoversList[currentVideoIndex];
+        if (Hls.isSupported()) {
+          const hls = new Hls({
+            enableWorker: true,
+            lowLatencyMode: true,
+            backBufferLength: 90,
+          });
 
-        video.play();
+          hls.loadSource(videoList[currentVideoIndex]);
+          hls.attachMedia(video);
+          video.volume = 0.5;
+          video.play();
+          currentVideoIndex++;
+        } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+          const nextVideo = videoList[currentVideoIndex];
+          video.src = nextVideo;
+          video.load();
+          video.volume = 0.5;
+          video.play();
+          currentVideoIndex++;
+        } else {
+          video.innerHTML = "El navegador no admite la reproducción de HLS.";
+        }
       } else {
         console.log("estamos en el else");
         menuPause.setAttribute("visible", "true");
