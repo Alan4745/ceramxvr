@@ -45,7 +45,7 @@ AFRAME.registerComponent("event-snow", {
       scene2.setAttribute("rotation", "0 0 0");
       scene2.setAttribute("visible", "true");
       camera1.setAttribute("fov", "80");
-      menuPause.setAttribute("position", "0 25 0");
+      menuPause.setAttribute("position", "0 0 0");
 
       audioBackgroud.src =
         "./assets/audios/audios_backgroud_music/Snow_Scene_Background_Music.mp3";
@@ -53,15 +53,13 @@ AFRAME.registerComponent("event-snow", {
       audioVoicer.src = "./assets/audios/audios_voiceovers/Snow_Post.mp3";
       audioVoicer.volume = 0 / 100;
       video.src = "./assets/videos/snow.mp4";
-      video1.setAttribute("color", "#000000");
-      video1.setAttribute("cargando", "si");
+      if (ascene.is("vr-mode")) {
+        butonPaused.setAttribute("position", "0 -1.3 0");
+      } else {
+        butonPaused.setAttribute("position", "0 -3.1 0");
+      }
       video.volume = 0.5;
-      video.muted = true;
       video.play();
-      valor_verdaera = true;
-      videoReiniciado = false;
-      progress_bar.setAttribute("visible", true);
-      progress_bar.setAttribute("position", "0 0 0");
     });
 
     let stop = false;
@@ -116,37 +114,6 @@ AFRAME.registerComponent("event-snow", {
         audioMainMenu.play();
       }
     });
-    var videoReiniciado = false;
-    video.addEventListener("progress", function () {
-      if (valor_verdaera) {
-        var buffered = video.buffered;
-        if (buffered.length > 0) {
-          var percent = (buffered.end(0) / video.duration) * 10;
-          console.log("Porcentaje de carga: " + percent.toFixed(3) + "%");
-          progress.setAttribute("width", `${percent.toFixed(3)}`);
-          porcentaje.setAttribute("value", `${percent.toFixed(1) * 2 * 10}%`);
-          porcentaje1.setAttribute("value", `${percent.toFixed(1) * 2 * 10}%`);
-          if (percent >= 5 && !videoReiniciado) {
-            console.log("El video está completamente cargado.");
-            video1.setAttribute("color", "");
-            video1.setAttribute("cargando", "no");
-            video.muted = false;
-            video.currentTime = 0;
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
-            video.play();
-            video.volume = 50 / 100;
-            valor_verdaera = false;
-            videoReiniciado = true;
-            progress_bar.setAttribute("visible", false);
-            progress_bar.setAttribute("position", "0 25 0");
-          }
-        }
-      }
-    });
   },
 });
 
@@ -159,7 +126,6 @@ AFRAME.registerComponent("event-debris", {
     var menuPause = document.querySelector("#menuPause");
     var cursor1 = document.querySelector("#cursor1");
     var counter = document.querySelector("#counter");
-    var video1 = document.querySelector("#video1");
     var butonPaused = document.querySelector("#butonPaused");
     var textCounter = document.querySelector("#text-counter");
     var ring = document.querySelector("#ring");
@@ -195,16 +161,14 @@ AFRAME.registerComponent("event-debris", {
       audioVoicer.src = "./assets/audios/audios_voiceovers/Debris_Post.mp3";
       audioVoicer.volume = 0 / 100;
       video.src = "./assets/videos/debris.mp4";
-      video1.setAttribute("color", "#000000");
-      video1.setAttribute("cargando", "si");
 
+      if (ascene.is("vr-mode")) {
+        butonPaused.setAttribute("position", "0 -1.3 0");
+      } else {
+        butonPaused.setAttribute("position", "0 -3.1 0");
+      }
       video.volume = 0.5;
-      video.muted = true;
       video.play();
-      valor_verdaera = true;
-      videoReiniciado = false;
-      progress_bar.setAttribute("visible", true);
-      progress_bar.setAttribute("position", "0 0 0");
     });
 
     let stop = false;
@@ -261,48 +225,6 @@ AFRAME.registerComponent("event-debris", {
         audioMainMenu.play();
       }
     });
-
-    var progress = document.querySelector("#progress");
-    var porcentaje = document.querySelector("#porcentaje");
-    var porcentaje1 = document.querySelector("#porcentaje1");
-    var progress_bar = document.querySelector("#progress_bar");
-    var videoReiniciado = false;
-    var valor_verdaera = false;
-
-    video.addEventListener("progress", function () {
-      if (valor_verdaera) {
-        var buffered = video.buffered;
-        if (buffered.length > 0) {
-          var percent = (buffered.end(0) / video.duration) * 10;
-          console.log("Porcentaje de carga: " + percent.toFixed(3) + "%");
-          progress.setAttribute("width", `${percent.toFixed(3)}`);
-
-          porcentaje.setAttribute("value", `${percent.toFixed(1) * 2 * 10}%`);
-          porcentaje1.setAttribute("value", `${percent.toFixed(1) * 2 * 10}%`);
-          if (percent >= 5 && !videoReiniciado) {
-            console.log("El video está completamente cargado.");
-            video1.setAttribute("color", "");
-            video1.setAttribute("cargando", "no");
-            video.muted = false;
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
-
-            video.currentTime = 0;
-            video.volume = 50 / 100;
-
-            video.play();
-            valor_verdaera = false;
-            videoReiniciado = true;
-            progress_bar.setAttribute("visible", false);
-            progress_bar.setAttribute("position", "0 25 0");
-          }
-        }
-      }
-    });
   },
 });
 
@@ -339,10 +261,6 @@ AFRAME.registerComponent("event-rain", {
       scene3 = true;
       video.setAttribute("esene", "true");
 
-      var audioBackgroud1 = localStorage.getItem("audioBackgroud");
-      var audioVoicer1 = localStorage.getItem("audioVoicer");
-      var videoAudio1 = localStorage.getItem("videoAudio");
-
       scene1.setAttribute("visible", "false");
       scene1.setAttribute("position", "0 15 0");
       scene2.setAttribute("rotation", "0 0 0");
@@ -358,16 +276,14 @@ AFRAME.registerComponent("event-rain", {
       audioVoicer.src = "./assets/audios/audios_voiceovers/Rain_Post.mp3";
       audioVoicer.volume = 0 / 100;
       video.src = "./assets/videos/rain.mp4";
-      video1.setAttribute("color", "#000000");
-      video1.setAttribute("cargando", "si");
+      if (ascene.is("vr-mode")) {
+        butonPaused.setAttribute("position", "0 -1.3 0");
+      } else {
+        butonPaused.setAttribute("position", "0 -3.1 0");
+      }
 
       video.volume = 0.5;
-      video.muted = true;
       video.play();
-      valor_verdaera = true;
-      videoReiniciado = false;
-      progress_bar.setAttribute("visible", true);
-      progress_bar.setAttribute("position", "0 0 0");
     });
 
     let stop = false;
@@ -427,51 +343,6 @@ AFRAME.registerComponent("event-rain", {
       }
       // Aquí puedes realizar las acciones que desees al finalizar el video
     }); // var videoElement = this.el.components.material.material.map.image;s
-
-    var progress = document.querySelector("#progress");
-    var porcentaje = document.querySelector("#porcentaje");
-    var porcentaje1 = document.querySelector("#porcentaje1");
-    var progress_bar = document.querySelector("#progress_bar");
-    var videoReiniciado = false;
-    var valor_verdaera = false;
-
-    // Escuchamos el evento "progress" para mostrar el porcentaje de carga
-    video.addEventListener("progress", function () {
-      if (valor_verdaera) {
-        var buffered = video.buffered;
-        if (buffered.length > 0) {
-          var percent = (buffered.end(0) / video.duration) * 10;
-          console.log("Porcentaje de carga: " + percent.toFixed(3) + "%");
-          progress.setAttribute("width", `${percent.toFixed(3)}`);
-
-          porcentaje.setAttribute("value", `${percent.toFixed(1) * 2 * 10}%`);
-          porcentaje1.setAttribute("value", `${percent.toFixed(1) * 2 * 10}%`);
-          // Verificamos si el porcentaje es igual a 100 y si el video no se ha reiniciado
-          if (percent >= 5 && !videoReiniciado) {
-            console.log("El video está completamente cargado.");
-            video1.setAttribute("color", "");
-            video1.setAttribute("cargando", "no");
-            video.muted = false;
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
-
-            // Reiniciar el video al inicio
-            video.currentTime = 0;
-            video.volume = 50 / 100;
-
-            video.play();
-            valor_verdaera = false;
-            videoReiniciado = true; // Marcar que el video se ha reiniciado
-            progress_bar.setAttribute("visible", false);
-            progress_bar.setAttribute("position", "0 25 0");
-          }
-        }
-      }
-    });
   },
 });
 
@@ -529,15 +400,13 @@ AFRAME.registerComponent("event-glare", {
       audioVoicer.src = "./assets/audios/audios_voiceovers/Glare_Post.mp3";
       audioVoicer.volume = 0 / 100;
       video.src = "./assets/videos/glare.mp4";
-      video1.setAttribute("color", "#000000");
-      video1.setAttribute("cargando", "si");
+      if (ascene.is("vr-mode")) {
+        butonPaused.setAttribute("position", "0 -1.3 0");
+      } else {
+        butonPaused.setAttribute("position", "0 -3.1 0");
+      }
       video.volume = 0.5;
-      video.muted = true;
       video.play();
-      valor_verdaera = true;
-      videoReiniciado = false;
-      progress_bar.setAttribute("visible", true);
-      progress_bar.setAttribute("position", "0 0 0");
     });
 
     let stop = false;
@@ -598,49 +467,6 @@ AFRAME.registerComponent("event-glare", {
       }
       // Aquí puedes realizar las acciones que desees al finalizar el video
     }); // var videoElement = this.el.components.material.material.map.image;s
-
-    var progress = document.querySelector("#progress");
-    var porcentaje = document.querySelector("#porcentaje");
-    var porcentaje1 = document.querySelector("#porcentaje1");
-    var progress_bar = document.querySelector("#progress_bar");
-    var videoReiniciado = false;
-    var valor_verdaera = false;
-
-    // Escuchamos el evento "progress" para mostrar el porcentaje de carga
-    video.addEventListener("progress", function () {
-      if (valor_verdaera) {
-        var buffered = video.buffered;
-        if (buffered.length > 0) {
-          var percent = (buffered.end(0) / video.duration) * 10;
-          console.log("Porcentaje de carga: " + percent.toFixed(3) + "%");
-          progress.setAttribute("width", `${percent.toFixed(3)}`);
-
-          porcentaje.setAttribute("value", `${percent.toFixed(1) * 2 * 10}%`);
-          porcentaje1.setAttribute("value", `${percent.toFixed(1) * 2 * 10}%`);
-          // Verificamos si el porcentaje es igual a 100 y si el video no se ha reiniciado
-          if (percent >= 5 && !videoReiniciado) {
-            console.log("El video está completamente cargado.");
-            video1.setAttribute("color", "");
-            video1.setAttribute("cargando", "no");
-            video.muted = false;
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
-
-            // Reiniciar el video al inicio
-            video.currentTime = 0;
-            video.play();
-            valor_verdaera = false;
-            videoReiniciado = true; // Marcar que el video se ha reiniciado
-            progress_bar.setAttribute("visible", false);
-            progress_bar.setAttribute("position", "0 25 0");
-          }
-        }
-      }
-    });
   },
 });
 
@@ -701,17 +527,13 @@ AFRAME.registerComponent("event-insects", {
       audioVoicer.src = "./assets/audios/audios_voiceovers/Insects_Post.mp3";
       audioVoicer.volume = 0 / 100;
       video.src = "./assets/videos/insects.mp4";
-
-      video1.setAttribute("color", "#000000");
-      video1.setAttribute("cargando", "si");
-
+      if (ascene.is("vr-mode")) {
+        butonPaused.setAttribute("position", "0 -1.3 0");
+      } else {
+        butonPaused.setAttribute("position", "0 -3.1 0");
+      }
       video.volume = 0.5;
-      video.muted = true;
       video.play();
-      valor_verdaera = true;
-      videoReiniciado = false;
-      progress_bar.setAttribute("visible", true);
-      progress_bar.setAttribute("position", "0 0 0");
     });
 
     let stop = false;
@@ -773,51 +595,6 @@ AFRAME.registerComponent("event-insects", {
 
       // Aquí puedes realizar las acciones que desees al finalizar el video
     }); // var videoElement = this.el.components.material.material.map.image;s
-
-    var progress = document.querySelector("#progress");
-    var porcentaje = document.querySelector("#porcentaje");
-    var porcentaje1 = document.querySelector("#porcentaje1");
-    var progress_bar = document.querySelector("#progress_bar");
-    var videoReiniciado = false;
-    var valor_verdaera = false;
-
-    // Escuchamos el evento "progress" para mostrar el porcentaje de carga
-    video.addEventListener("progress", function () {
-      if (valor_verdaera) {
-        var buffered = video.buffered;
-        if (buffered.length > 0) {
-          var percent = (buffered.end(0) / video.duration) * 10;
-          console.log("Porcentaje de carga: " + percent.toFixed(3) + "%");
-          progress.setAttribute("width", `${percent.toFixed(3)}`);
-
-          porcentaje.setAttribute("value", `${percent.toFixed(1) * 2 * 10}%`);
-          porcentaje1.setAttribute("value", `${percent.toFixed(1) * 2 * 10}%`);
-          // Verificamos si el porcentaje es igual a 100 y si el video no se ha reiniciado
-          if (percent >= 5 && !videoReiniciado) {
-            console.log("El video está completamente cargado.");
-            video1.setAttribute("color", "");
-            video1.setAttribute("cargando", "no");
-
-            if (ascene.is("vr-mode")) {
-              butonPaused.setAttribute("position", "0 -1.3 0");
-            } else {
-              butonPaused.setAttribute("position", "0 -3.1 0");
-            }
-            video.muted = false;
-
-            // Reiniciar el video al inicio
-            video.currentTime = 0;
-            video.volume = 50 / 100;
-
-            video.play();
-            valor_verdaera = false;
-            videoReiniciado = true; // Marcar que el video se ha reiniciado
-            progress_bar.setAttribute("visible", false);
-            progress_bar.setAttribute("position", "0 25 0");
-          }
-        }
-      }
-    });
   },
 });
 
