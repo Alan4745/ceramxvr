@@ -719,6 +719,7 @@ AFRAME.registerComponent("event-start", {
         video.play();
       } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
         video.src = "/assets/encode/encode_snow/snow.m3u8";
+        video.load();
         video.volume = 0.5;
         video.play();
       } else {

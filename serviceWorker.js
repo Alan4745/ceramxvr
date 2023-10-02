@@ -34,11 +34,6 @@ const assets = [
   "/assets/BACK.png",
   "/assets/About.png",
   "/assets/videos/ceramx_window_treatment.mp4",
-  "/assets/videos/debris.mp4",
-  "/assets/videos/glare.mp4",
-  "/assets/videos/insects.mp4",
-  "/assets/videos/rain.mp4",
-  "/assets/videos/snow.mp4",
   "/assets/audios/Main_Menu.mp3",
   "/assets/audios/audios_backgroud_music/Debris_Scene_Background_Music.mp3",
   "/assets/audios/audios_backgroud_music/Glare_Scene_Background_Music.mp3",
@@ -57,6 +52,11 @@ const assets = [
   "/assets/images/settings.png",
   "/assets/images/test3.png",
   "/assets/share_safari.png",
+  "/assets/encode/encode_debris/debris.m3u8",
+  "/assets/encode/encode_snow/snow.m3u8",
+  "/assets/encode/encode_glare/glare.m3u8",
+  "/assets/encode/encode_insects/insects.m3u8",
+  "/assets/encode/encode_rain/rain.m3u8",
 ];
 
 self.addEventListener("install", (installEvent) => {
