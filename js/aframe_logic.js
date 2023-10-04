@@ -1194,15 +1194,15 @@ AFRAME.registerComponent("mobile1", {
       console.log("estamos en mobile");
       // entityCamera.setAttribute("position", "0 0.5 8");
 
-      setTimeout(() => {
-        console.log("estamos dentro de 1/2 segundos");
+      // setTimeout(() => {
+      //   console.log("estamos dentro de 1/2 segundos");
 
-        ascene.removeAttribute("cursor");
-        cursor1.removeAttribute("objects");
-        cursor1.setAttribute("fuse", "true");
-        cursor1.setAttribute("visible", "true");
-        ring.setAttribute("visible", true);
-      }, 500);
+      //   ascene.removeAttribute("cursor");
+      //   cursor1.removeAttribute("objects");
+      //   cursor1.setAttribute("fuse", "true");
+      //   cursor1.setAttribute("visible", "true");
+      //   ring.setAttribute("visible", true);
+      // }, 500);
     }
   },
 });
