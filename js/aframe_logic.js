@@ -165,6 +165,12 @@ AFRAME.registerComponent("event-debris", {
 
     var el = this.el;
     el.addEventListener("click", function () {
+
+      window.dataLayer.push({
+        'event': 'debris_video_start',
+        'videoName': 'Debris Scene'
+      });
+
       let controls =
         document.querySelector("a-camera").components["look-controls"];
       controls.pitchObject.rotation.x = 0;
@@ -262,6 +268,11 @@ AFRAME.registerComponent("event-debris", {
     });
 
     testVideo.addEventListener("ended", function () {
+
+      window.dataLayer.push({
+        'event': 'debris_video_end',
+        'videoName': 'Debris Scene'
+      });
       if (video.getAttribute("esene") == "true") {
         console.log("temino de video glare");
 
@@ -293,6 +304,12 @@ AFRAME.registerComponent("event-rain", {
 
     var el = this.el;
     el.addEventListener("click", function () {
+
+      window.dataLayer.push({
+        'event': 'rain_video_start',
+        'videoName': 'Rain Scene'
+      });
+
       let controls =
         document.querySelector("a-camera").components["look-controls"];
       controls.pitchObject.rotation.x = 0;
@@ -387,6 +404,11 @@ AFRAME.registerComponent("event-rain", {
     });
 
     testVideo.addEventListener("ended", function () {
+
+      window.dataLayer.push({
+        'event': 'rain_video_end',
+        'videoName': 'Rain Scene'
+      });
       if (video.getAttribute("esene") == "true") {
         console.log("temino de video glare");
 
@@ -416,6 +438,12 @@ AFRAME.registerComponent("event-glare", {
 
     var el = this.el;
     el.addEventListener("click", function () {
+
+      window.dataLayer.push({
+        'event': 'glare_video_start',
+        'videoName': 'Glare Scene'
+      });
+
       let controls =
         document.querySelector("a-camera").components["look-controls"];
       controls.pitchObject.rotation.x = 0;
@@ -516,6 +544,11 @@ AFRAME.registerComponent("event-glare", {
     });
 
     testVideo.addEventListener("ended", function () {
+
+      window.dataLayer.push({
+        'event': 'glare_video_end',
+        'videoName': 'Glare Scene'
+      });
       if (video.getAttribute("esene") == "true") {
         console.log("temino de video glare");
 
@@ -551,6 +584,12 @@ AFRAME.registerComponent("event-insects", {
     var el = this.el;
 
     el.addEventListener("click", function () {
+
+      window.dataLayer.push({
+        'event': 'insects_video_start',
+        'videoName': 'Insects Scene'
+      });
+
       let controls =
         document.querySelector("a-camera").components["look-controls"];
       controls.pitchObject.rotation.x = 0;
@@ -647,6 +686,11 @@ AFRAME.registerComponent("event-insects", {
     });
 
     testVideo.addEventListener("ended", function () {
+
+      window.dataLayer.push({
+        'event': 'insects_video_end',
+        'videoName': 'Insects Scene'
+      });
       if (video.getAttribute("esene") == "true") {
         console.log("temino de video glare");
         scene1.setAttribute("visible", "true");
@@ -680,6 +724,12 @@ AFRAME.registerComponent("event-start", {
     var el = this.el;
 
     el.addEventListener("click", function () {
+
+      window.dataLayer.push({
+        'event': 'startall_video_start',
+        'videoName': 'Start All Scene'
+      });
+
       let controls =
         document.querySelector("a-camera").components["look-controls"];
       controls.pitchObject.rotation.x = 0;
