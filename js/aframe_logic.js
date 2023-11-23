@@ -19,6 +19,13 @@ AFRAME.registerComponent("event-snow", {
 
     var el = this.el;
     el.addEventListener("click", function () {
+
+      window.dataLayer.push({
+        'event': 'snow_video_start',
+        'videoName': 'Snow Scene'
+      });
+
+
       let controls =
         document.querySelector("a-camera").components["look-controls"];
       controls.pitchObject.rotation.x = 0;
@@ -120,6 +127,12 @@ AFRAME.registerComponent("event-snow", {
       }
     });
     testVideo.addEventListener("ended", function () {
+
+      window.dataLayer.push({
+        'event': 'snow_video_end',
+        'videoName': 'Snow Scene'
+      });
+      
       if (video.getAttribute("esene") == "true") {
         console.log("temino de video glare");
 
